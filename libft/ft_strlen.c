@@ -5,19 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/29 15:00:01 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:03:30 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/06 08:11:52 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/06 12:04:32 by retounsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-	int i;
+	char	c;
+	size_t	i;
 
 	i = 0;
-	while (s[i])
-		i++;
+	c = *str;
+	while (c != '\0')
+	{
+		c = str[++i];
+	}
 	return (i);
 }

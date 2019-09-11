@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_3dstrdel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/22 16:30:47 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:01:46 by retounsi         ###   ########.fr       */
+/*   Created: 2019/04/02 19:32:10 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/04/08 21:12:56 by retounsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_power(long n, int power)
+void	ft_3dstrdel(char ***as)
 {
-	int n2;
+	int i;
 
-	n2 = n;
-	while (power > 1)
+	i = 0;
+	if (as != NULL)
 	{
-		n *= n2;
-		power--;
+		while (as[i])
+		{
+			ft_2dstrdel(as[i]);
+			i++;
+		}
+		free(as);
+		as = NULL;
 	}
-	return (n);
 }

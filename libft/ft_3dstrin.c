@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_3dstrin.c                                       :+:      :+:    :+:   */
+/*   ft_3Dstrin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:38:54 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 09:59:14 by retounsi         ###   ########.fr       */
+/*   Updated: 2019/03/05 14:07:13 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_2dstrin(char **s1, char ***s2)
+int	ft_2dstrin(char **s1, char ***s2)
 {
 	size_t i;
 
@@ -26,13 +26,11 @@ static int	ft_2dstrin(char **s1, char ***s2)
 	return (0);
 }
 
-int			ft_3dstrin(char ***s1, char ***s2)
+int	ft_3dstrin(char ***s1, char ***s2)
 {
 	size_t	i;
 
 	i = 0;
-	if (!s1 || !s2)
-		return (0);
 	while (s1[i])
 	{
 		if (ft_2dstrin(s1[i], s2) == 0)

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_list.c                                    :+:      :+:    :+:   */
+/*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 14:02:54 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:01:50 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/23 17:24:46 by ibouabda          #+#    #+#             */
+/*   Updated: 2018/11/23 19:52:27 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_list(t_list *list)
+void	ft_lstaddend(t_list **alst, t_list *new)
 {
-	while (list)
+	t_list *m;
+
+	if (*alst == NULL)
+		*alst = new;
+	else
 	{
-		ft_putendl(list->content);
-		list = list->next;
+		m = *alst;
+		while (m->next)
+			m = m->next;
+		m->next = new;
 	}
 }

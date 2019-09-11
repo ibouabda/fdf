@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_split.c                                  :+:      :+:    :+:   */
+/*   ft_strnstrdup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 09:31:49 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:03:26 by retounsi         ###   ########.fr       */
+/*   Created: 2019/09/09 09:57:10 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/09 11:32:02 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strlen_split(const char *str, char c)
+int		ft_strnstrdup(char *str, char *to_find, size_t n, char **stock)
 {
-	int i;
-	int count;
-
-	count = 0;
-	i = 0;
-	while (str[i])
+	if (ft_strnstr(str, to_find, n))
 	{
-		if (str[i] != c)
-			count++;
-		i++;
+		*stock = ft_strdup(to_find);
+		return (1);
 	}
-	return (count);
+	return (0);
 }

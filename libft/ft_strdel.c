@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 10:18:21 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:18:39 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/19 17:11:51 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/04/08 20:33:07 by retounsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_strdel(char **as)
 {
-	if (!as)
-		return ;
-	free(*as);
-	*as = NULL;
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

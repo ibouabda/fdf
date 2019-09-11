@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_test.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/10 13:33:13 by retounsi         ###   ########.fr       */
+/*   Updated: 2019/09/11 09:45:59 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "mlx.h"
 #include <stdio.h>
 
-void	fill_pixel(t_env *e, int x, int y, int color);
-{
-	e->img_string =
-}
+// void	fill_pixel(t_env *e, int x, int y, int color);
+// {
+// 	e->img_string =
+// }
 
 int		main()
 {

@@ -3,83 +3,113 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 12:05:43 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:05:51 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/20 17:45:01 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/08 17:29:44 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_word_size(const char *str, int c, int i)
-{
-	size_t k;
-
-	k = 0;
-	while (str[i] != c)
-	{
-		i++;
-		k++;
-	}
-	return (k);
-}
-
-static int	ft_count_word(const char *s, char c)
+static int	ft_mesure_index(char *str, char c)
 {
 	int i;
-	int count;
-	int check;
+	int j;
 
-	check = 0;
 	i = 0;
-	count = 0;
-	while (s[i])
+	j = 0;
+	while (str[i])
 	{
-		if (s[i] == c && s[i])
-			check = 1;
-		if (((check == 1 && s[i] != c) || (i == 0 && s[i] != c)) && s[i])
+		while ((str[i] == c) && str[i])
 		{
-			count++;
-			check = 0;
-		}
-		i++;
-	}
-	return (count);
-}
-
-static char	**ft_strspliter(const char *s, char c, int i, int word)
-{
-	char	**splited;
-	int		count;
-	int		b;
-
-	b = 0;
-	count = 0;
-	if (!(splited = (char**)malloc(sizeof(char *) * ft_count_word(s, c) + 1)))
-		return (0);
-	splited[ft_count_word(s, c)] = 0;
-	while (word-- > 0)
-	{
-		while (s[i] == c && s[i])
-			i++;
-		if (!(splited[count] = (char*)malloc(sizeof(char) *
-		ft_word_size(s, c, i) + 1)))
-			return (0);
-		while (s[i] != c && s[i])
-		{
-			splited[count][b++] = s[i];
 			i++;
 		}
-		splited[count++][b] = '\0';
-		b = 0;
+		if (str[i] != '\0')
+		{
+			while (str[i] != c && str[i])
+			{
+				i++;
+			}
+			j++;
+		}
 	}
-	return (splited);
+	return (j);
 }
 
-char		**ft_strsplit(const char *s, char c)
+static char	**ft_fill_index(char **index, char *str, char c)
 {
-	if (!s)
-		return (NULL);
-	return (ft_strspliter(s, c, 0, ft_count_word(s, c)));
+	int i;
+	int j;
+	int k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (str[i])
+	{
+		while ((str[i] == c) && str[i])
+		{
+			i++;
+		}
+		if (str[i])
+		{
+			k = 0;
+			while (str[i] != c && str[i])
+				index[j][k++] = str[i++];
+			index[j][k] = '\0';
+			j++;
+		}
+	}
+	return (index);
+}
+
+static char	**ft_malloc_str(char **index, char *str, char c)
+{
+	int i;
+	int j;
+	int k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (str[i])
+	{
+		while ((str[i] == c) && str[i])
+			i++;
+		if (str[i])
+		{
+			k = 0;
+			while (str[i] != c && str[i])
+			{
+				k++;
+				i++;
+			}
+			if (!(index[j++] = (char *)malloc(sizeof(char) * (k)))) //ft_strnew
+				return (NULL);
+		}
+	}
+	return (index);
+}
+
+char		**ft_strsplit(char const *str, char c)
+{
+	char	**index;
+	int		j;
+	char	*str2;
+
+	if (str)
+	{
+		str2 = ft_strdup(str);
+		j = ft_mesure_index(str2, c);
+		if (!(index = (char **)malloc(sizeof(char *) * (j + 1))))
+		{
+			ft_putendl("ft_lstnewstr malloc error");
+			exit(EXIT_FAILURE);
+		}
+		index[j] = 0;
+		index = ft_malloc_str(index, str2, c);
+		return (ft_fill_index(index, str2, c));
+	}
+	return (NULL);
 }

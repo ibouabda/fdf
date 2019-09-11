@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtolower.c                                    :+:      :+:    :+:   */
+/*   ft_sqrt_aprox.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 12:44:48 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:04:28 by retounsi         ###   ########.fr       */
+/*   Created: 2019/04/01 15:40:34 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/08/29 13:29:00 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtolower(char *str)
+int	ft_sqrt_aprox(int nb)
 {
-	size_t i;
+	int	a;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		i++;
-	}
-	return (str);
+	a = 1;
+	while (a * a < nb && nb <= 2147395600)
+		a++;
+	return (a);
 }

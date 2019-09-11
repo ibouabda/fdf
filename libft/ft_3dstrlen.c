@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strin.c                                         :+:      :+:    :+:   */
+/*   ft_3dstrlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 14:16:09 by retounsi          #+#    #+#             */
-/*   Updated: 2019/04/16 14:18:30 by retounsi         ###   ########.fr       */
+/*   Created: 2019/03/21 13:17:09 by retounsi          #+#    #+#             */
+/*   Updated: 2019/03/21 13:21:18 by retounsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strin(const char *s, int c)
+int		ft_3dstrlen(char ***str)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	if (c == '\0')
-		return (1);
-	while (s[i])
+	while (str[i])
 	{
-		if (s[i] == c)
-			return (1);
 		i++;
 	}
-	return (0);
+	return (i);
 }

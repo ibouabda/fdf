@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 15:12:52 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 11:08:01 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/22 16:20:08 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/08/29 13:30:43 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list *new_m;
+	t_list *newlist;
 
-	if (!(new_m = malloc(sizeof(t_list))))
-		return (NULL);
-	if (!content)
+	if (!(newlist = (t_list *)malloc(sizeof(t_list))))
 	{
-		new_m->content = NULL;
-		new_m->content_size = 0;
+		ft_putendl("ft_lstnew malloc error");
+		exit(EXIT_FAILURE);
+	}
+	if (content == NULL)
+	{
+		newlist->content = NULL;
+		content_size = 0;
 	}
 	else
 	{
-		if (!(new_m->content = malloc(sizeof(content_size))))
-			return (NULL);
-		new_m->content_size = content_size;
-		ft_memcpy(new_m->content, content, content_size);
+		if (!(newlist->content = malloc(content_size)))
+		{
+			ft_putendl("ft_lstnew malloc error");
+			exit(EXIT_FAILURE);
+		}
+		newlist->content_size = content_size;
+		ft_memcpy(newlist->content, content, content_size);
 	}
-	new_m->next = NULL;
-	return (new_m);
+	newlist->next = NULL;
+	return (newlist);
 }

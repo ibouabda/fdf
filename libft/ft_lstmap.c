@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 15:46:58 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:23:20 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/23 17:03:51 by ibouabda          #+#    #+#             */
+/*   Updated: 2018/11/24 18:07:39 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	t_list *m;
 	t_list *newm;
 
-	if (!lst)
-		return (0);
 	m = lst;
 	newlst = ft_lstnew(f(m)->content, f(m)->content_size);
 	m = m->next;

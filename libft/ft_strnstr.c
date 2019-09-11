@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 14:24:37 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:04:11 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/17 16:48:03 by ibouabda          #+#    #+#             */
+/*   Updated: 2018/11/27 15:02:22 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-	size_t i;
-	size_t j;
-	size_t to_find_size;
+	size_t	i;
+	size_t	j;
+	size_t	max;
 
 	i = 0;
-	to_find_size = ft_strlen(to_find);
-	if (to_find_size <= 0)
+	j = 0;
+	max = ft_strlen((char*)to_find);
+	if (max <= 0)
 		return ((char*)str);
 	while (str[i] && i < n)
 	{
@@ -28,8 +29,8 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 		while (str[i + j] == to_find[j] && i + j < n)
 		{
 			j++;
-			if (j == to_find_size)
-				return ((char*)str + i);
+			if (j == max)
+				return (&((char*)str)[i]);
 		}
 		i++;
 	}

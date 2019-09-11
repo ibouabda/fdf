@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/05 19:26:12 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:00:54 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/13 14:50:35 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/08/29 13:30:29 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	size_t	i;
-	char	*mydest;
-	char	*mysrc;
 	char	myc;
+	char	*mysrc;
+	char	*mydest;
 
-	i = 0;
 	myc = (unsigned char)c;
-	mydest = (char*)dest;
 	mysrc = (char*)src;
+	mydest = (char*)dest;
+	i = 0;
 	while (i < n)
 	{
 		mydest[i] = mysrc[i];
-		if (mydest[i] == myc)
-			return (mydest + i + 1);
+		if (mysrc[i] == myc)
+			return (&mydest[i + 1]);
 		i++;
 	}
 	return (NULL);

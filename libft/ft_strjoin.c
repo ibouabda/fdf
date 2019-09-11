@@ -3,40 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 11:39:55 by retounsi          #+#    #+#             */
-/*   Updated: 2019/04/18 17:35:55 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/20 10:19:57 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/08 17:34:39 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	int		i;
-	int		c;
+	char *mys1;
+	char *mys2;
+	char *dest;
 
-	if (!s1 || !s2)
-		return (NULL);
-	c = 0;
-	i = 0;
-	if (!(str = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1)))
-		return (0);
-	while (s1[i])
+	if (s1 && s2)
 	{
-		str[c] = s1[i];
-		i++;
-		c++;
+		mys1 = (char *)s1;
+		mys2 = (char *)s2;
+		if (!(dest = ft_strnew(ft_strlen(mys1) + ft_strlen(mys2))))
+		{
+			ft_putendl("ok");
+			return (NULL);
+		}
+		return (ft_strcat(ft_strcpy(dest, mys1), mys2));
 	}
-	i = 0;
-	while (s2[i])
-	{
-		str[c] = s2[i];
-		i++;
-		c++;
-	}
-	str[c] = '\0';
-	return (str);
+	return (NULL);
 }

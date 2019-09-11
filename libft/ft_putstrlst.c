@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
+/*   ft_putstrlst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 12:38:50 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:04:33 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/23 19:19:20 by ibouabda          #+#    #+#             */
+/*   Updated: 2018/11/28 13:26:45 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtoupper(char *str)
+void	ft_putstrlst(t_list *lst)
 {
-	size_t i;
+	t_list *m;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
+	m = lst;
+	while (m)
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] -= 32;
-		i++;
+		ft_putstr((char *)m->content);
+		ft_putchar('\n');
+		m = m->next;
 	}
-	return (str);
 }

@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_2dputstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 12:50:10 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 09:58:51 by retounsi         ###   ########.fr       */
+/*   Created: 2019/03/26 12:05:39 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/04/02 11:54:31 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_2dputstr(char **str)
+void	ft_2dputstr(char **tetrim)
 {
 	size_t i;
 
 	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
+	while (tetrim[i])
 	{
-		ft_putstr(str[i]);
+		ft_putendl(tetrim[i]);
 		i++;
 	}
 }

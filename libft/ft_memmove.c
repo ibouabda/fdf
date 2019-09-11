@@ -3,23 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/07 16:16:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/03/11 10:01:37 by retounsi         ###   ########.fr       */
+/*   Created: 2018/11/11 14:55:30 by ibouabda          #+#    #+#             */
+/*   Updated: 2018/11/24 10:50:55 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*ft_inverted_memcpy(void *dest, const void *src, size_t n)
+void static	*increase(void *dest, const void *src, size_t n)
 {
-	int i;
+	size_t	i;
+	char	*mysrc;
+	char	*mydest;
 
+	mysrc = (char *)src;
+	mydest = (char *)dest;
+	i = 0;
+	while (i < n)
+	{
+		mydest[i] = mysrc[i];
+		i++;
+	}
+	return (dest);
+}
+
+void static	*decrease(void *dest, const void *src, size_t n)
+{
+	int		i;
+	char	*mysrc;
+	char	*mydest;
+
+	mysrc = (char *)src;
+	mydest = (char *)dest;
 	i = n - 1;
 	while (i >= 0)
 	{
-		((char *)dest)[i] = ((char *)src)[i];
+		mydest[i] = mysrc[i];
 		i--;
 	}
 	return (dest);
@@ -30,8 +51,8 @@ void		*ft_memmove(void *dest, const void *src, size_t n)
 	if (dest == src)
 		return (dest);
 	if (dest > src)
-		ft_inverted_memcpy(dest, src, n);
+		decrease(dest, src, n);
 	else
-		ft_memcpy(dest, src, n);
+		increase(dest, src, n);
 	return (dest);
 }
