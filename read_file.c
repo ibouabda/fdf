@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/11 17:08:37 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/11 18:17:49 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 int ft_check_line(t_list *m)
 {
 	int i;
-	int k;
 	int var;
 	char *line;
 
-	k = 0;
 	while (m)
 	{
 		i = 0;
@@ -43,12 +41,28 @@ int ft_check_line(t_list *m)
 	return (1);
 }
 
+// int	**create_dbtable(t_list *m, int size)
+// {
+// 	int **dbint;
+// 	int nbvar;
+
+// 	nbvar = 0;
+// 	dbint = ft_2dintnew(size);
+// 	while (m)
+// 	{
+		
+// 		m = m->next;
+// 	}
+// }
+
 int	read_file(int fd)
 {
 	char	*line;
 	t_list	*m;
+	int		size;
 
 	m = NULL;
+	size = 1;
 	while (get_next_line(fd, &line))
 	{
 		if (!line[0])
@@ -58,6 +72,7 @@ int	read_file(int fd)
 			return (0);
 		}
 		ft_lstaddend(&m, ft_lstnewd(line, 0));
+		size++;
 	}
 	ft_putstrlst(m);
 	if (!m || !((char*)m->content)[0] || !ft_check_line(m))

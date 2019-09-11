@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 12:30:11 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/11 18:09:11 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,6 @@ int					ft_strnstrdup(char *str, char *to_find, size_t n, char **stock);
 char				*ft_str2chr(char *src, char *to_find);
 t_list				*ft_lstnewd(void *content, size_t content_size);
 void				ft_lstdelstr(t_list *alst);
+int					**ft_2dintnew(size_t size);
 
 #endif

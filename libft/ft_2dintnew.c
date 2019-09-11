@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_2dintnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/11 18:19:37 by idris            ###   ########.fr       */
+/*   Created: 2019/09/11 18:04:15 by idris             #+#    #+#             */
+/*   Updated: 2019/09/11 18:08:27 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+int	**ft_2dintnew(size_t size)
 {
-	int fd;
-	int fd_dir;
+	int     **str;
+	size_t  i;
 
-	(void)argc;
-	fd_dir = open(argv[1], O_DIRECTORY);
-	if ((fd = open(argv[1], O_RDONLY)) < 0 || fd_dir)
+	i = 0;
+	if (!(str = (int**)malloc(sizeof(int*) * (size + 1))))
 	{
-		ft_putendl("error");
-		close(fd);
-		close(fd_dir);
-		return(-1);
+		ft_putendl("ft_2dintnew malloc error");
+		exit(EXIT_FAILURE);
 	}
-	if (read_file(fd) == 0)
-		ft_putendl("error");
-	close(fd);
-	close(fd_dir);
-	return (0);
+	while (i < (size + 1))
+	{
+		str[i] = NULL;
+		i++;
+	}
+	return (str);
 }
