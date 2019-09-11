@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/11 16:34:00 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/11 11:28:54 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/11 15:30:16 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	ft_lstdelstr(t_list *alst)
 {
-	int fd;
-
-	(void)argc;
-	if ((fd = open(argv[1], O_RDONLY)) < 0)
-		ft_putendl("error");
-	if (read_file(fd) == 0)
-		ft_putendl("error");
-	close(fd);
-	return (0);
+	if (alst)
+	{
+		if (alst->next)
+			ft_lstdelstr(alst->next);
+		if (alst->content)
+			ft_memdel((void**)&(alst->content));
+		if (alst)
+		ft_memdel((void**)&alst);
+	}
 }

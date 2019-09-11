@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 15:31:27 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/07 12:03:55 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/11 13:57:37 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void		ft_chooseid(t_prlist **id, const int fd)
 	}
 }
 
+void	ft_prlstdellink(t_prlist *m)
+{
+	ft_memdel((void**)&m->content);
+	ft_memdel((void**)&m);
+}
+
 int			get_next_line(const int fd, char **line)
 {
 	static t_prlist	*id;
@@ -83,7 +89,10 @@ int			get_next_line(const int fd, char **line)
 	}
 	ft_strdel(&buftmp);
 	if (red == 0 && !((char *)id->content)[0])
+	{
+		ft_prlstdellink(id);
 		return (0);
+	}
 	takeline(id->content, line);
 	return (1);
 }
