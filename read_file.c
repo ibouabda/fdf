@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/11 16:43:17 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/11 17:08:37 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int ft_check_line(t_list *m)
 				i++;
 			if (line[i] == ' ' && i - var < 5)
 				i++;
-			else if (line[i] || i - var > 5)
+			else if (line[i] || i - var >= 5)
 				return (0);
 		}
 		m = m->next;
