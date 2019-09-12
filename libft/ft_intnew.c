@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_intnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/12 10:24:42 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/12 10:06:48 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/12 10:09:28 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
+#include "libft.h"
 
-# define FDF_H
-
-# include "libft/libft.h"
-# include "get_next_line.h"
-# include <stdio.h> //a enlever
-# include <fcntl.h>
-int		**read_file(int fd);
-
-typedef struct	s_env
+int	*ft_intnew(int size)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	void	*img_string;
-}				t_env;
+	int	*str;
+	int	i;
 
-#endif
+	i = 0;
+	if (!(str = (int*)malloc(sizeof(int) * (size + 1))))
+	{
+		ft_putendl("ft_intnew malloc error");
+		exit(EXIT_FAILURE);
+	}
+	while (i < size + 1)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	return (str);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 18:09:11 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/12 10:10:45 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,6 @@ char				*ft_str2chr(char *src, char *to_find);
 t_list				*ft_lstnewd(void *content, size_t content_size);
 void				ft_lstdelstr(t_list *alst);
 int					**ft_2dintnew(size_t size);
+int					*ft_intnew(int size);
 
 #endif

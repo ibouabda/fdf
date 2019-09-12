@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/12 09:53:54 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/12 10:30:29 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,27 @@ int ft_check_line(t_list *m)
 	return (nbvar);
 }
 
-int *ft_insert_nb(t_list *m)
+int *ft_insert_nb(t_list *m, int nbvar)
 {
 	char *str;
+	int	*tab;
 	int i;
+	int k;
 
+	i = 0;
+	k = 0;
 	str = m->content;
+	tab = ft_intnew(nbvar);
 	while (str[i])
 	{
+		tab[k] = ft_atoi(str + i);
+		while(str[i] && str[i] != ' ')
+			i++;
+		if (tab[i])
+			i++;
+		k++;
 	}
+	return (tab);
 }
 
 int **create_dbtable(t_list *m, int size, int nbvar)
@@ -74,19 +86,22 @@ int **create_dbtable(t_list *m, int size, int nbvar)
 	int y;
 
 	dbint = ft_2dintnew(size);
+	y = 0;
 	while (m)
 	{
-		dbint[y] = ft_insert_nb(m);
+		dbint[y] = ft_insert_nb(m, nbvar);
 		m = m->next;
+		y++;
 	}
 	return (dbint);
 }
 
-int read_file(int fd)
+int **read_file(int fd)
 {
 	char *line;
 	t_list *m;
 	int size;
+	int **dbtab;
 	int nbvar;
 
 	m = NULL;
@@ -108,7 +123,7 @@ int read_file(int fd)
 		ft_lstdelstr(m);
 		return (0);
 	}
-	create_dbtable(m, size, nbvar);
+	dbtab = create_dbtable(m, size, nbvar);
 	ft_lstdelstr(m);
-	return (1);
+	return (dbtab);
 }
