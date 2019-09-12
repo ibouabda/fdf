@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/12 10:30:29 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/12 12:26:22 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int ft_analyze_line(char *line)
 	int nbvar;
 
 	i = 0;
-	nbvar = 0;
+	nbvar = 1;
 	while (line[i])
 	{
 		if (line[i] == '-')
@@ -43,12 +43,13 @@ int ft_check_line(t_list *m)
 	int nbvarmem;
 	int nbvar;
 	
-	nbvarmem = -1;
+	nbvarmem = 0;
 	while (m)
 	{
 		if ((nbvar = ft_analyze_line((char *)m->content)) == 0)
 			return (0);
-		if (nbvarmem == -1)
+		printf("nbvar : %i\n", nbvar);
+		if (nbvarmem == 0)
 			nbvarmem = nbvar;
 		else if (nbvarmem != nbvar)
 			return (0);
@@ -66,17 +67,18 @@ int *ft_insert_nb(t_list *m, int nbvar)
 
 	i = 0;
 	k = 0;
-	str = m->content;
+	str = (char*)m->content;
 	tab = ft_intnew(nbvar);
-	while (str[i])
+	while (str[i] && k < nbvar)
 	{
 		tab[k] = ft_atoi(str + i);
 		while(str[i] && str[i] != ' ')
 			i++;
-		if (tab[i])
+		while(str[i] == ' ')
 			i++;
 		k++;
 	}
+	//ft_puttabint(tab, nbvar);
 	return (tab);
 }
 
@@ -96,7 +98,7 @@ int **create_dbtable(t_list *m, int size, int nbvar)
 	return (dbint);
 }
 
-int **read_file(int fd)
+int **read_file(int fd) //ajouter verifier derniere ligne
 {
 	char *line;
 	t_list *m;
@@ -106,24 +108,27 @@ int **read_file(int fd)
 
 	m = NULL;
 	size = 1;
+	nbvar = 0;
 	while (get_next_line(fd, &line))
 	{
 		if (!line[0])
 		{
 			ft_lstdelstr(m);
 			ft_strdel(&line);
-			return (0);
+			return (NULL);
 		}
 		ft_lstaddend(&m, ft_lstnewd(line, 0));
 		size++;
 	}
 	ft_putstrlst(m);
-	if (!m || !((char *)m->content)[0] || 0 == (nbvar = ft_check_line(m)))
+	if (!m || !((char *)m->content)[0] || (nbvar = ft_check_line(m)) == 0) 
 	{
 		ft_lstdelstr(m);
-		return (0);
+		return (NULL);
 	}
-	dbtab = create_dbtable(m, size, nbvar);
+	ft_putendl("ok");
+	dbtab = create_dbtable(m, size, nbvar); //probleme avec le size/nbvar du tab
 	ft_lstdelstr(m);
+	ft_2dputtabint(dbtab, nbvar);
 	return (dbtab);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intnew.c                                        :+:      :+:    :+:   */
+/*   ft_2dputtabint.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 10:06:48 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/12 11:05:31 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/12 10:55:44 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/12 12:01:56 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_intnew(int size)
+void ft_2dputtabint(int **tab, int sizeline)
 {
-	int	*tab;
+	int i;
 
-	if (!(tab = (int*)malloc(sizeof(int) * (size))))
+	i = 0;
+	while (tab[i])
 	{
-		ft_putendl("ft_intnew malloc error");
-		exit(EXIT_FAILURE);
+		ft_puttabint(tab[i], sizeline);
+		i++;
 	}
-	return (tab);
 }

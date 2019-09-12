@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/11 18:19:37 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/12 11:17:43 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int		main(int argc, char **argv)
 
 	(void)argc;
 	fd_dir = open(argv[1], O_DIRECTORY);
-	if ((fd = open(argv[1], O_RDONLY)) < 0 || fd_dir)
+	if ((fd = open(argv[1], O_RDONLY)) < 0 || fd_dir > 0)
 	{
 		ft_putendl("error");
 		close(fd);
 		close(fd_dir);
 		return(-1);
 	}
-	if (read_file(fd) == 0)
+	if (read_file(fd) == NULL)
 		ft_putendl("error");
 	close(fd);
 	close(fd_dir);
