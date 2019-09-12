@@ -6,20 +6,20 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/12 12:26:22 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/12 17:25:14 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int ft_analyze_line(char *line)
+int		ft_analyze_line(char *line)
 {
-	int i;
-	int var;
-	int nbvar;
+	int	i;
+	int	var;
+	int	nbvar;
 
 	i = 0;
-	nbvar = 1;
+	nbvar = 0;
 	while (line[i])
 	{
 		if (line[i] == '-')
@@ -38,18 +38,17 @@ int ft_analyze_line(char *line)
 	return (nbvar);
 }
 
-int ft_check_line(t_list *m)
+int		ft_check_line(t_list *m)
 {
-	int nbvarmem;
-	int nbvar;
-	
-	nbvarmem = 0;
+	int	nbvarmem;
+	int	nbvar;
+
+	nbvarmem = -1;
 	while (m)
 	{
 		if ((nbvar = ft_analyze_line((char *)m->content)) == 0)
 			return (0);
-		printf("nbvar : %i\n", nbvar);
-		if (nbvarmem == 0)
+		if (nbvarmem == -1)
 			nbvarmem = nbvar;
 		else if (nbvarmem != nbvar)
 			return (0);
@@ -58,77 +57,67 @@ int ft_check_line(t_list *m)
 	return (nbvar);
 }
 
-int *ft_insert_nb(t_list *m, int nbvar)
+int		*ft_insert_nb(char *str, int nbvar)
 {
-	char *str;
 	int	*tab;
-	int i;
-	int k;
+	int	i;
+	int	k;
 
 	i = 0;
 	k = 0;
-	str = (char*)m->content;
 	tab = ft_intnew(nbvar);
-	while (str[i] && k < nbvar)
+	while (str[i])
 	{
 		tab[k] = ft_atoi(str + i);
-		while(str[i] && str[i] != ' ')
+		while (str[i] && str[i] != ' ')
 			i++;
-		while(str[i] == ' ')
+		if (str[i] == ' ')
 			i++;
 		k++;
 	}
-	//ft_puttabint(tab, nbvar);
 	return (tab);
 }
 
-int **create_dbtable(t_list *m, int size, int nbvar)
+int		**create_dbtable(t_list *m, int size, int nbvar)
 {
-	int **dbint;
-	int y;
+	int	**dbint;
+	int	y;
 
 	dbint = ft_2dintnew(size);
 	y = 0;
 	while (m)
 	{
-		dbint[y] = ft_insert_nb(m, nbvar);
+		dbint[y] = ft_insert_nb((char*)m->content, nbvar);
 		m = m->next;
 		y++;
 	}
 	return (dbint);
 }
 
-int **read_file(int fd) //ajouter verifier derniere ligne
+int		read_file(int fd, int ***dbtab)
 {
-	char *line;
-	t_list *m;
-	int size;
-	int **dbtab;
-	int nbvar;
+	char	*line;
+	t_list	*m;
+	int		size;
+	int		nbvar;
 
 	m = NULL;
-	size = 1;
+	size = 0;
 	nbvar = 0;
-	while (get_next_line(fd, &line))
+	*dbtab = NULL;
+	while (get_next_line(fd, &line) > 0)
 	{
-		if (!line[0])
-		{
-			ft_lstdelstr(m);
-			ft_strdel(&line);
-			return (NULL);
-		}
 		ft_lstaddend(&m, ft_lstnewd(line, 0));
+		if (!line[0])
+			ft_exit(*dbtab, m);
 		size++;
 	}
-	ft_putstrlst(m);
-	if (!m || !((char *)m->content)[0] || (nbvar = ft_check_line(m)) == 0) 
-	{
-		ft_lstdelstr(m);
-		return (NULL);
-	}
-	ft_putendl("ok");
-	dbtab = create_dbtable(m, size, nbvar); //probleme avec le size/nbvar du tab
+	if (line[0])
+		ft_exit(*dbtab, m);
+	ft_strdel(&line);
+	if (!m || !((char *)m->content)[0] || (nbvar = ft_check_line(m)) == 0)
+		ft_exit(*dbtab, m);
+	*dbtab = create_dbtable(m, size, nbvar);
 	ft_lstdelstr(m);
-	ft_2dputtabint(dbtab, nbvar);
-	return (dbtab);
+	return (nbvar);
 }

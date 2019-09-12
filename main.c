@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/12 11:17:43 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/12 17:24:17 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 int		main(int argc, char **argv)
 {
-	int fd;
-	int fd_dir;
+	int	fd;
+	int	fd_dir;
+	int	**dbtab;
+	int size;
 
 	(void)argc;
 	fd_dir = open(argv[1], O_DIRECTORY);
 	if ((fd = open(argv[1], O_RDONLY)) < 0 || fd_dir > 0)
 	{
 		ft_putendl("error");
-		close(fd);
 		close(fd_dir);
-		return(-1);
+		return (-1);
 	}
-	if (read_file(fd) == NULL)
-		ft_putendl("error");
+	size = read_file(fd, &dbtab);
+	ft_2dputtabint(dbtab, size);
+	ft_2dmemdel((void**)dbtab);
 	close(fd);
-	close(fd_dir);
 	return (0);
 }

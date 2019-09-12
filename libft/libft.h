@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/12 11:00:05 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/12 14:31:35 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ int					**ft_2dintnew(size_t size);
 int					*ft_intnew(int size);
 void				ft_2dputtabint(int **tab, int sizeline);
 void				ft_puttabint(int *tab, int size);
+void				ft_2dmemdel(void **as);
 
 #endif
