@@ -6,7 +6,7 @@
 #    By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/07 15:46:15 by retounsi         ###   ########.fr        #
+#    Updated: 2019/09/14 10:54:58 by retounsi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ PATHFILE = ./libft
 
 CC = gcc -I /usr/local/include/
 
-SRC_NAME = mlx_test.c
+SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c libft/libft.a
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
