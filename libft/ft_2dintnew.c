@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_2dintnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 17:11:51 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 12:20:43 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/11 18:04:15 by idris             #+#    #+#             */
+/*   Updated: 2019/09/11 18:08:27 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+int	**ft_2dintnew(size_t size)
 {
-	if (as && *as)
+	int     **str;
+	size_t  i;
+
+	i = 0;
+	if (!(str = (int**)malloc(sizeof(int*) * (size + 1))))
 	{
-		free(*as);
-		*as = NULL;
+		ft_putendl("ft_2dintnew malloc error");
+		exit(EXIT_FAILURE);
 	}
+	while (i < (size + 1))
+	{
+		str[i] = NULL;
+		i++;
+	}
+	return (str);
 }

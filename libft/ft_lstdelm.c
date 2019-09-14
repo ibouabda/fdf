@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 18:30:52 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/07/15 18:34:54 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/11 11:28:23 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_lstdelm(t_list **alst)
 	{
 		erase = m;
 		m = m->next;
+		if (erase->content)
+			free(erase->content);
 		free(erase);
 	}
 	*alst = NULL;

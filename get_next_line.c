@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 15:31:27 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/07 12:03:55 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/12 17:38:38 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ void		ft_chooseid(t_prlist **id, const int fd)
 	}
 }
 
+int			ft_prlstdellink(t_prlist *m)
+{
+	ft_memdel((void**)&m->content);
+	ft_memdel((void**)&m);
+	return (0);
+}
+
 int			get_next_line(const int fd, char **line)
 {
 	static t_prlist	*id;
@@ -67,13 +74,14 @@ int			get_next_line(const int fd, char **line)
 	char			*todel;
 	int				red;
 
+	red = -1;
 	buftmp = ft_strnew(BUFF_SIZE + 1);
-	if (!line || (read(fd, buftmp, 0) == -1))
+	if (!line || (read(fd, buftmp, 0)) == -1)
 		return (-1);
 	id = !id ? ft_prlistnewstr(ft_strnew(0), fd, NULL) : id;
 	if (id->fd != fd)
 		ft_chooseid(&id, fd);
-	while (!ft_strchr(id->content, '\n') &&\
+	while (!ft_strchr(id->content, '\n') &&
 	(red = read(id->fd, buftmp, BUFF_SIZE)))
 	{
 		buftmp[red] = '\0';
@@ -82,8 +90,8 @@ int			get_next_line(const int fd, char **line)
 		ft_strdel(&todel);
 	}
 	ft_strdel(&buftmp);
-	if (red == 0 && !((char *)id->content)[0])
-		return (0);
 	takeline(id->content, line);
+	if (red == 0 && !((char *)id->content)[0])
+		return (ft_prlstdellink(id));
 	return (1);
 }

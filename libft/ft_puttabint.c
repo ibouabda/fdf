@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_puttabint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 17:11:51 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 12:20:43 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/12 10:52:15 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/12 15:29:57 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+void ft_puttabint(int *tab, int size)
 {
-	if (as && *as)
+	int i;
+
+	i = 0;
+	while (i < size)
 	{
-		free(*as);
-		*as = NULL;
+		ft_putnbr(tab[i]);
+		ft_putstr(" ");
+		i++;
 	}
+	ft_putendl("");
 }

@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_2dmemdel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 17:11:51 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 12:20:43 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/12 14:29:54 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/12 14:31:16 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+void	ft_2dmemdel(void **as)
 {
-	if (as && *as)
+	size_t i;
+
+	i = 0;
+	if (as != NULL)
 	{
-		free(*as);
-		*as = NULL;
+		while (as[i])
+		{
+			free(as[i]);
+			i++;
+		}
+		free(as);
+		as = NULL;
 	}
 }

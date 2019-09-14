@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_intnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 17:11:51 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 12:20:43 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/12 10:06:48 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/12 11:05:31 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+int	*ft_intnew(int size)
 {
-	if (as && *as)
+	int	*tab;
+
+	if (!(tab = (int*)malloc(sizeof(int) * (size))))
 	{
-		free(*as);
-		*as = NULL;
+		ft_putendl("ft_intnew malloc error");
+		exit(EXIT_FAILURE);
 	}
+	return (tab);
 }

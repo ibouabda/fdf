@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_lstnewd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 17:11:51 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 12:20:43 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/11 10:32:26 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/11 10:36:28 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+t_list	*ft_lstnewd(void *content, size_t content_size)
 {
-	if (as && *as)
+	t_list *newlist;
+
+	if (!(newlist = (t_list *)malloc(sizeof(t_list))))
 	{
-		free(*as);
-		*as = NULL;
+		ft_putendl("ft_lstnew malloc error");
+		exit(EXIT_FAILURE);
 	}
+	newlist->content = content;
+	newlist->content_size = content_size;
+	newlist->next = NULL;
+	return (newlist);
 }

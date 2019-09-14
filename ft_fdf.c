@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_fdf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 17:11:51 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/11 12:20:43 by ibouabda         ###   ########.fr       */
+/*   Created: 2019/09/12 17:22:01 by ibouabda          #+#    #+#             */
+/*   Updated: 2019/09/12 17:22:53 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	ft_strdel(char **as)
+void	ft_exit(int **dbtable, t_list *m)
 {
-	if (as && *as)
-	{
-		free(*as);
-		*as = NULL;
-	}
+	if (dbtable)
+		ft_2dmemdel((void**)dbtable);
+	if (m)
+		ft_lstdelstr(m);
+	ft_putendl("error");
+	exit(EXIT_FAILURE);
 }
