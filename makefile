@@ -1,22 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+         #
+#    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/14 10:54:58 by retounsi         ###   ########.fr        #
+#    Updated: 2019/09/14 16:25:23 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-CFLAGS = -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Werror -Wextra
+
+MLX2 = -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 
 PATHFILE = ./libft
 
-CC = gcc -I /usr/local/include/
+CC = gcc 
+
+MLX = -I /usr/local/include/
 
 SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c libft/libft.a
 
@@ -28,7 +32,7 @@ all: $(NAME)
 	make -C $(PATHFILE)
 
 $(NAME): .libft $(OBJ_NAME) libft/libft.a
-	$(CC) $(SRC_NAME) $(CFLAGS)
+	$(CC) -o $(NAME) $(CFLAGS) $(SRC_NAME)
 
 clean:
 	rm -f $(OBJ_NAME)

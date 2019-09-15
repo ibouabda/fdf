@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_test.c                                         :+:      :+:    :+:   */
+/*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/14 12:47:51 by retounsi         ###   ########.fr       */
+/*   Updated: 2019/09/15 14:13:16 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,26 @@ void	fill_pixel(char *img_string, int x, int y, int color)
 	img_string[pos + 2] = (char)color;
 }
 
-int		main()
+void	create_img(int winx, int winy, t_env *e)
 {
-	t_env	e;
 	int		bpp;
 	int		s_l;
 	int		endian;
-	size_t	i;
-	int		**tab;
-	int		x;
-	int		y;
 
-	i = 0;
-	x = 0;
-	y = 0;
-	e.mlx_ptr = mlx_init();
-	e.win_ptr = mlx_new_window(e.mlx_ptr, 1280, 720,"test");
-	e.img_ptr = mlx_new_image(e.mlx_ptr, 1280, 720);
-	e.img_string = mlx_get_data_addr(e.img_ptr, &(bpp), &(s_l), &(endian));
-	while (y < 720 && x < 1280 )
-	{
-		fill_pixel(e.img_string, x, y, 255);
-		x += 1;
-		y += 1;
-	}
-	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
-	//mlx_hook(e.win_ptr, 2, (1 << 0), mlx_put_image_to_window, &e);
-	mlx_loop(e.mlx_ptr);
-	return (0);
+	e->winx = winx;
+	e->winy = winy;
+	e->mlx_ptr = mlx_init();
+	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"test");
+	e->img_ptr = mlx_new_image(e->mlx_ptr, winx, winy);
+	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
+	mlx_loop(e->mlx_ptr);
 }
+
+	// while (y < 720 && x < 1280 )
+	// {
+	// 	fill_pixel(e.img_string, x, y, 255);
+	// 	x += 1;
+	// 	y += 1;
+	// }
+	// mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
+	//mlx_hook(e.win_ptr, 2, (1 << 0), mlx_put_image_to_window, &e);

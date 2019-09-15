@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retounsi <retounsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/09/11 10:02:28 by retounsi         ###   ########.fr       */
-=======
-/*   Updated: 2019/09/12 17:24:57 by ibouabda         ###   ########.fr       */
->>>>>>> 0e7b28f7a2cc17b38b401ff0fe4ad16d4fea6445
+/*   Updated: 2019/09/15 14:13:45 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +19,26 @@
 # include <stdio.h> //a enlever
 # include <fcntl.h>
 
-int				read_file(int fd, int ***dbtab);
-void			ft_exit(int **dbtable, t_list *m);
 
 typedef struct	s_env
 {
+	int		winx;
+	int		winy;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
 	char	*img_string;
 }				t_env;
+
+typedef struct	s_equ
+{
+	int		a;
+	int		b;
+}				t_equ;
+
+void			create_img(int winx, int winy, t_env *e);
+int				read_file(int fd, int ***dbtab);
+void			ft_exit(int **dbtable, t_list *m);
+void			table_too_img(t_env *e, int **dbtab,int size);
 
 #endif

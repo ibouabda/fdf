@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/12 14:31:35 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/15 14:10:12 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ typedef	struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct	s_3dpoint
+{
+	int x, y, z;
+}				t_3dpoint;
+
+typedef struct	s_point
+{
+	int x, y;
+}				t_point;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *src, size_t n);
@@ -125,5 +135,7 @@ int					*ft_intnew(int size);
 void				ft_2dputtabint(int **tab, int sizeline);
 void				ft_puttabint(int *tab, int size);
 void				ft_2dmemdel(void **as);
+t_point				*ft_t_pointnew(int x, int y);
+void				t_3dpointval(t_3dpoint *point, int x, int y, int z);
 
 #endif
