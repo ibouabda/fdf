@@ -6,7 +6,7 @@
 #    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/14 16:25:23 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/09/15 18:28:35 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC = gcc
 
 MLX = -I /usr/local/include/
 
-SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c libft/libft.a
+SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c table_too_img.c mlx_img.c libft/libft.a
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -32,7 +32,7 @@ all: $(NAME)
 	make -C $(PATHFILE)
 
 $(NAME): .libft $(OBJ_NAME) libft/libft.a
-	$(CC) -o $(NAME) $(CFLAGS) $(SRC_NAME)
+	$(CC) -o $(NAME) $(CFLAGS) $(SRC_NAME) $(MLX) $(MLX2)
 
 clean:
 	rm -f $(OBJ_NAME)

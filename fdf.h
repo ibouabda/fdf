@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/15 14:13:45 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/15 18:26:43 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include "libft/libft.h"
 # include "get_next_line.h"
+# include "mlx.h"
 # include <stdio.h> //a enlever
 # include <fcntl.h>
 
@@ -40,5 +41,6 @@ void			create_img(int winx, int winy, t_env *e);
 int				read_file(int fd, int ***dbtab);
 void			ft_exit(int **dbtable, t_list *m);
 void			table_too_img(t_env *e, int **dbtab,int size);
-
+void			ft_fill_pixel(t_point point, int color, t_env *e);
+void			create_img(int winx, int winy, t_env *e);
 #endif

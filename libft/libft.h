@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/15 14:10:12 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/15 16:54:17 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_3dpoint
 
 typedef struct	s_point
 {
-	int x, y;
+	int x, y, h;
 }				t_point;
 
 int					ft_atoi(const char *str);

@@ -6,24 +6,20 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/15 14:13:16 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/15 18:32:19 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
-#include <stdio.h>
 
-void	fill_pixel(char *img_string, int x, int y, int color)
+void	ft_fill_pixel(t_point point, int color, t_env *e)
 {
 	int pos;
-	int	pos_y;
-	int	pos_x;
 
-	pos = y * 1280 * 4 + x * 4;
-	img_string[pos] = (char)color;
-	img_string[pos + 1] = (char)color;
-	img_string[pos + 2] = (char)color;
+	pos = point.y * e->winx * 4 + point.x * 4;
+	e->img_string[pos] = (char)color;
+	e->img_string[pos + 1] = (char)color;
+	e->img_string[pos + 2] = (char)color;
 }
 
 void	create_img(int winx, int winy, t_env *e)
@@ -38,7 +34,6 @@ void	create_img(int winx, int winy, t_env *e)
 	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"test");
 	e->img_ptr = mlx_new_image(e->mlx_ptr, winx, winy);
 	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
-	mlx_loop(e->mlx_ptr);
 }
 
 	// while (y < 720 && x < 1280 )

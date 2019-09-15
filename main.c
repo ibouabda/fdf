@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/15 12:07:49 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/15 19:11:15 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ int		main(int argc, char **argv)
 {
 	int	**dbtab;
 	int size;
-	t_env e; //malloc?
+	t_env e;
 
 	size = checkandparse(argc, argv, &dbtab);
 	create_img(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
 	table_too_img(&e, dbtab, size);
-	ft_2dputtabint(dbtab, size);
+	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
+	mlx_loop(e.mlx_ptr);
+	//ft_2dputtabint(dbtab, size);
 	ft_2dmemdel((void**)dbtab);
 	return (0);
 }
