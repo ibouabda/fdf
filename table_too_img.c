@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/15 19:12:49 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/15 20:00:18 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ void	table_too_img(t_env *e, int **dbtab,int size)
 		tabx = 0;
 		while (tabx < size - 1)
 		{
-			t_3dpointval(&z, tabx, taby, dbtab[taby][tabx]);
+			t_3dpointval(&z, tabx * 10, taby * 10, dbtab[taby][tabx] * 10);
 			interpret(&a, &z, e);
-			t_3dpointval(&z, tabx + 1, taby, dbtab[taby][tabx + 1]);
+			t_3dpointval(&z, (tabx + 1) * 10, taby * 10, dbtab[taby][tabx + 1]* 10);
 			interpret(&b, &z, e);
 			ft_calculate(a, b, generate_function(a, b), e);
-			t_3dpointval(&z, tabx, taby + 1, dbtab[taby + 1][tabx]);
+			t_3dpointval(&z, tabx * 10, (taby + 1) * 10, dbtab[taby + 1][tabx] * 10);
 			interpret(&b, &z, e);
 			ft_calculate(a, b, generate_function(a, b), e);
 			tabx++;
