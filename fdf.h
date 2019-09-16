@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/16 10:55:54 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/16 17:44:22 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "minilibx_macos/mlx.h"
 # include <stdio.h> //a enlever
 # include <fcntl.h>
+# include <math.h>
 
 
 typedef struct	s_env
