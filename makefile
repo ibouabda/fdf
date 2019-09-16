@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: idris <idris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/16 14:00:04 by idris            ###   ########.fr        #
+#    Updated: 2019/09/16 14:02:42 by idris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,19 +26,19 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 all: $(NAME)
 
-.libft:
+$(LIB):
 	make -C $(PATHFILE)
 
-$(NAME): .libft $(OBJ_NAME) libft/libft.a
-	$(CC) $(CFLAGS) $(MLX2) -o $(NAME) $(SRC_NAME)
+$(NAME): $(LIB) $(OBJ_NAME) libft/libft.a
+	$(CC) $(MLX) -o $(NAME) $(SRC_NAME)
 
 clean:
 	rm -f $(OBJ_NAME)
 	make clean -C $(PATHFILE)
 
 fclean:
-		rm -f $(OBJ_NAME)
-		rm -f $(NAME)
-		make fclean -C $(PATHFILE)
+	rm -f $(OBJ_NAME)
+	rm -f $(NAME)
+	make fclean -C $(PATHFILE)
 
 re: fclean all

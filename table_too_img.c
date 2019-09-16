@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/15 20:00:18 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/16 11:28:22 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,35 +59,35 @@ void	ft_calculate(t_point a, t_point b, t_equ axb, t_env *e)
 	x = a.x + 1;
 	y = a.y + 1;
 	ft_fill_pixel(a, 255, e);
-	while (x < b.x && y < b.y)
-	{
-		if ((b.x - a.x) == 0)
-		{
-			point.y = y;
-			point.x = a.x;
-		}
-		if ((b.y - a.y) == 0)
-		{
-			point.y = a.y;
-			point.x = x;
-		}
-		else
-		{
-			point.x = x;
-			point.y = axb.a * x + axb.b;
-		}
-		// if (x == 0)
-		// 	point.h = a.h;
-		// else if (a.h == 0 && b.h == 0)
-		// 	point.h = 0;
-		// else if (b.x == 0)
-		// 	point.h = b.h;
-		// else
-		// point.h = a.h + ((b.h - a.h) / (b.x / x));
-		ft_fill_pixel(point, 255, e);
-		x++;
-		y++;
-	}
+	// while (x < b.x && y < b.y)
+	// {
+	// 	if ((b.x - a.x) == 0)
+	// 	{
+	// 		point.y = y;
+	// 		point.x = a.x;
+	// 	}
+	// 	if ((b.y - a.y) == 0)
+	// 	{
+	// 		point.y = a.y;
+	// 		point.x = x;
+	// 	}
+	// 	else
+	// 	{
+	// 		point.x = x;
+	// 		point.y = axb.a * x + axb.b;
+	// 	}
+	// 	// if (x == 0)
+	// 	// 	point.h = a.h;
+	// 	// else if (a.h == 0 && b.h == 0)
+	// 	// 	point.h = 0;
+	// 	// else if (b.x == 0)
+	// 	// 	point.h = b.h;
+	// 	// else
+	// 	// point.h = a.h + ((b.h - a.h) / (b.x / x));
+	// 	ft_fill_pixel(point, 255, e);
+	// 	x++;
+	// 	y++;
+	// }
 	ft_fill_pixel(b, 255, e);
 }
 
