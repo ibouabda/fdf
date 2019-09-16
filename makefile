@@ -6,7 +6,7 @@
 #    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/15 18:28:35 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/09/16 11:55:20 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX2 = -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 
 PATHFILE = ./libft
 
-CC = gcc 
+CC = gcc
 
 MLX = -I /usr/local/include/
 
@@ -28,19 +28,19 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 all: $(NAME)
 
-.libft:
+$(LIB):
 	make -C $(PATHFILE)
 
-$(NAME): .libft $(OBJ_NAME) libft/libft.a
-	$(CC) -o $(NAME) $(CFLAGS) $(SRC_NAME) $(MLX) $(MLX2)
+$(NAME): $(LIB) $(OBJ_NAME) libft/libft.a
+	$(CC) -o $(NAME) $(SRC_NAME) $(MLX) $(MLX2)
 
 clean:
 	rm -f $(OBJ_NAME)
 	make clean -C $(PATHFILE)
 
 fclean:
-		rm -f $(OBJ_NAME)
-		rm -f $(NAME)
-		make fclean -C $(PATHFILE)
+	rm -f $(OBJ_NAME)
+	rm -f $(NAME)
+	make fclean -C $(PATHFILE)
 
 re: fclean all
