@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/15 18:26:43 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/16 10:55:54 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include "libft/libft.h"
 # include "get_next_line.h"
-# include "mlx.h"
+# include "minilibx_macos/mlx.h"
 # include <stdio.h> //a enlever
 # include <fcntl.h>
 
