@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/16 17:49:10 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/17 10:07:38 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,8 @@ t_equ	generate_function(t_point a, t_point b)
 
 void interpret(t_point *point, t_3dpoint *pt3d, t_env *e)
 {
-	// x' = (x-z)/ sqrt(2)
-
-	// y' = (x + 2y + z) / sqrt(6)
-	// if (z->z != 0)
-	// {
-		point->x = e->winx / 2 + (pt3d->x - pt3d->z) / sqrt(2);
-		point->y = e->winy / 2 + (pt3d->x + 2 * pt3d->y + pt3d->z) / sqrt(6);
-	// }
-	// else
-	// {
-	// 	point->x = e->winx / 2 + z->x;
-	// 	point->y = e->winy / 2 + z->y;
-	// }
+	point->x = e->winx / 2 + (pt3d->x - pt3d->z) / sqrt(2);
+	point->y = e->winy / 2 + (pt3d->x + 2 * pt3d->y + pt3d->z) / sqrt(6);
 	point->h = pt3d->z;
 }
 
@@ -121,8 +110,3 @@ void	table_too_img(t_env *e, int **dbtab,int size)
 		taby++;
 	}
 }
-	// if (!(z = (t_3dpoint*)malloc(sizeof(t_3dpoint))))
-	// {
-	// 	ft_putendl("malloc error t_3dpoint");
-	// 	exit(EXIT_FAILURE);
-	// }
