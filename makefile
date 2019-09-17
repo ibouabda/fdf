@@ -6,7 +6,7 @@
 #    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/16 15:19:56 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/09/17 13:50:15 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,10 @@ MLX = -framework OpenGL -framework AppKit
 
 PATHFILE = ./libft
 
-CC = gcc
+CC = gcc -g
 
-SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c table_too_img.c mlx_img.c
+SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c table_too_img.c mlx_img.c\
+			ft_trylines.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

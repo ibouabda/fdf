@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   table_too_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/17 10:07:38 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/17 11:56:15 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,38 +48,44 @@ void	ft_calculate(t_point a, t_point b, t_equ axb, t_env *e)
 	int y;
 	t_point point;
 
-	x = a.x + 1;
-	y = a.y + 1;
-	ft_fill_pixel(a, 255, e);
-	// while (x < b.x && y < b.y)
+	x = a.x;
+	y = a.y;
+	// if (a.x > b.x)
 	// {
-	// 	if ((b.x - a.x) == 0)
-	// 	{
-	// 		point.y = y;
-	// 		point.x = a.x;
-	// 	}
-	// 	if ((b.y - a.y) == 0)
-	// 	{
-	// 		point.y = a.y;
-	// 		point.x = x;
-	// 	}
-	// 	else
-	// 	{
-	// 		point.x = x;
-	// 		point.y = axb.a * x + axb.b;
-	// 	}
-	// 	// if (x == 0)
-	// 	// 	point.h = a.h;
-	// 	// else if (a.h == 0 && b.h == 0)
-	// 	// 	point.h = 0;
-	// 	// else if (b.x == 0)
-	// 	// 	point.h = b.h;
-	// 	// else
-	// 	// point.h = a.h + ((b.h - a.h) / (b.x / x));
-	// 	ft_fill_pixel(point, 255, e);
-	// 	x++;
-	// 	y++;
+	// 	point.x = b.x;
+	// 	a.x = b.x;
+	// 	b.x = point.x;
 	// }
+	ft_fill_pixel(a, 255, e);
+	while (x < b.x && y < b.y)
+	{
+		if ((b.x - a.x) == 0) //verticale
+		{
+			point.y = y;
+			point.x = a.x;
+		}
+		if ((b.y - a.y) == 0) // horizontale
+		{
+			point.y = a.y;
+			point.x = x;
+		}
+		else
+		{
+			point.x = x;
+			point.y = axb.a * x;
+		}
+		// if (x == 0)
+		// 	point.h = a.h;
+		// else if (a.h == 0 && b.h == 0)
+		// 	point.h = 0;
+		// else if (b.x == 0)
+		// 	point.h = b.h;
+		// else
+		// point.h = a.h + ((b.h - a.h) / (b.x / x));
+		ft_fill_pixel(point, 255, e);
+		x++;
+		y++;
+	}
 	ft_fill_pixel(b, 255, e);
 }
 

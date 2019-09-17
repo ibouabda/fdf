@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/15 16:54:17 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/17 14:20:01 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,6 @@ void				ft_puttabint(int *tab, int size);
 void				ft_2dmemdel(void **as);
 t_point				*ft_t_pointnew(int x, int y);
 void				t_3dpointval(t_3dpoint *point, int x, int y, int z);
+void				ft_putnbrl(int n);
 
 #endif
