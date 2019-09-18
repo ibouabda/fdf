@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/17 14:55:43 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:05:30 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,13 @@ int		main(int argc, char **argv)
 	int	**dbtab;
 	int size;
 	t_env e;
-	t_point a;
-	t_point b;
 
 	size = checkandparse(argc, argv, &dbtab);
 	create_img(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
-	//table_too_img(&e, dbtab, size);
-	a.x = e.winx/2;
-	a.y = e.winy/2;
-	b.x = e.winx/2 + 100;
-	b.y = e.winy/2 + 10;
-	ft_trylines(a, b, &e);
+	table_too_img(&e, dbtab, size);
+	table_too_img2(&e, dbtab, size);
 	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
 	mlx_loop(e.mlx_ptr);
-	//ft_2dputtabint(dbtab, size);
 	ft_2dmemdel((void**)dbtab);
 	return (0);
 }

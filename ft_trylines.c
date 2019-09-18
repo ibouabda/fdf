@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 13:22:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/17 15:09:19 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/18 11:23:41 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,29 @@ t_equ function(t_point a, t_point b)
 
 void ft_trylines(t_point a, t_point b, t_env *e)
 {
-	int x;
-	int y;
+	float dx;
+	float dy;
+	float ax;
+	float eps; 
 	t_point point;
-	t_equ axb;
 
-	x = a.x;
-	point.y = a.y;
-	axb.a = 1;
-	axb.b = 0;
-	//ft_fill_pixel(a, 255, e);
-	printf(" a.x = %i, a.y = %i\n", a.x, a.y);
-	printf(" b.x = %i, b.y = %i\n", b.x, b.y);
-	point.x = x;
-	point.y = axb.a * x + axb.b + 0.5;
-	while (x < 1280 && point.y < 720)
+	dx = ABS(b.x - a.x);
+	dy = ABS(b.x - a.x);
+	ax = dy/dx;
+	eps = 0;
+	point = a;
+	// printf(" a.x = %i, a.y = %i\n", a.x, a.y);
+	// printf(" b.x = %i, b.y = %i\n", b.x, b.y);
+	while (point.x <= b.x)
 	{
-		printf(" x = %i, y = %i\n", point.x, point.y);
+		// printf(" x = %i, y = %i\n", point.x, point.y);
 		ft_fill_pixel(point, 255, e);
-		x++;
-		point.x = x;
-		point.y = axb.a * x + axb.b + 0.5;
+		eps-=ax;
+		if (eps < -0.5)
+		{
+			point.y--;
+			eps+=1.0;
+		}
+		point.x++;
 	}
-	//ft_fill_pixel(b, 255, e);
 }
