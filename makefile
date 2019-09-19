@@ -6,7 +6,7 @@
 #    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/18 14:15:48 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/09/19 18:19:29 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLX = -framework OpenGL -framework AppKit
 CC = gcc -g
 
 SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c table_too_img.c mlx_img.c\
-			ft_trylines.c
+			ft_drawline.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -47,5 +47,6 @@ fclean:
 	rm -f $(OBJ_NAME)
 	rm -f $(NAME)
 	make fclean -C ./libft
+	make clean -C ./minilibx_macos
 
 re: fclean all

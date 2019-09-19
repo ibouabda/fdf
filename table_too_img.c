@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/18 13:52:24 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/19 18:22:19 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,38 +61,6 @@ void interpret2(t_point *point, t_3dpoint *pt3d, t_env *e)
 	point->h = pt3d->z;
 }
 
-int		drawline(t_point a, t_point b, t_env *e)
-{
-	int dx;
-	int dy;
-	int p;
-	t_point point;
-
-	dx=b.x - a.x;
-	dy=b.y - a.y;
-	point.x=a.x;
-	point.y=a.y;
-	p=2*dy-dx;
-	if (point.x == b.x)
-		return (0);
-	while(point.x < b.x)
-	{
-		if(p>=0)
-		{
-			ft_fill_pixel(point, 255, e);
-			point.y++;
-			p=p+2*dy-2*dx;
-		}
-		else
-		{
-			ft_fill_pixel(point, 255, e);
-			p=p+2*dy;
-		}
-		point.x++;
-	}
-	return (1);
-}
-
 int	drawvertical(t_point a, t_point b, t_env *e)
 {
 	if (a.y > b.y)
@@ -119,20 +87,19 @@ void	table_too_img2(t_env *e, int **dbtab,int size)
 		tabx = 0;
 		while (tabx < size)
 		{
-			t_3dpointval(&z, tabx * 10, taby * 10, dbtab[taby][tabx]);
+			t_3dpointval(&z, tabx * 30, taby * 30, dbtab[taby][tabx]);
 			interpret2(&a, &z, e);
 			if (tabx + 1 < size)
 			{
-				t_3dpointval(&z, (tabx + 1) * 10, taby * 10, dbtab[taby][tabx + 1]);
+				t_3dpointval(&z, (tabx + 1) * 30, taby * 30, dbtab[taby][tabx + 1]);
 				interpret2(&b, &z, e);
-				drawline(a, b, e);
+				ft_drawline(&a, &b, e);
 			}
 			if (dbtab[taby + 1])
 			{
-				t_3dpointval(&z, tabx * 10, (taby + 1) * 10, dbtab[taby + 1][tabx]);
+				t_3dpointval(&z, tabx * 30, (taby + 1) * 30, dbtab[taby + 1][tabx]);
 				interpret2(&b, &z, e);
-				if (!drawline(a, b, e))
-					printf("drawv : %i\n", drawvertical(a, b, e));
+				ft_drawline(&a, &b, e);
 			}
 			tabx++;
 		}
