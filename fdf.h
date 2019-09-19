@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/19 18:14:45 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/19 19:40:53 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define FDF_H
 
 # include "libft/libft.h"
-# include "get_next_line.h"
 # include "minilibx_macos/mlx.h"
 # include <stdio.h> //a enlever
 # include <fcntl.h>

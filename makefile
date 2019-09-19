@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
+#    By: idris <idris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/19 18:19:29 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/09/19 19:39:16 by idris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX = -framework OpenGL -framework AppKit
 
 CC = gcc -g
 
-SRC_NAME = main.c get_next_line.c read_file.c ft_fdf.c table_too_img.c mlx_img.c\
+SRC_NAME = main.c read_file.c ft_fdf.c table_too_img.c mlx_img.c\
 			ft_drawline.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

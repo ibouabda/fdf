@@ -3,21 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_drawline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/19 18:25:59 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/19 19:32:41 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void ft_line(t_point a, t_point b, t_env *e)
+void highline(t_point a, t_point b, t_env *e)
 {
-	float y;
 	float x;
 	float m;
 	t_point point;
+
+	if (a.y > b.y)
+	{
+		point = a;
+		a = b;
+		b = point;
+	}
+	x = a.x;
+	m = (float)(b.x - a.x) / (float)(b.y - a.y);
+	while (a.y <= b.y && a.x < e->winx && a.y < e->winy)
+	{
+		ft_fill_pixel(a, 255, e);
+		x += m;
+		a.x = (int)(x + 0.5);
+		a.y++;
+	}
+}
+void ft_line(t_point a, t_point b, t_env *e)
+{
+	float y;
+	float m;
 
 	m = (float)(b.y - a.y) / (float)(b.x - a.x);
 	y = a.y;
@@ -34,24 +53,7 @@ void ft_line(t_point a, t_point b, t_env *e)
 		}
 	}
 	else
-	{
-		if (a.y > b.y)
-		{
-			point = a;
-			a = b;
-			b = point;
-		}
-		x = a.x;
-		m = (float)(b.x - a.x) / (float)(b.y - a.y);
-		while (a.y <= b.y && a.x < e->winx && a.y < e->winy)
-		{
-			printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
-			ft_fill_pixel(a, 255, e);
-			x += m;
-			a.x = (int)(x + 0.5);
-			a.y++;
-		}
-	}
+		highline(a, b, e);
 }
 
 void ft_vertical(t_point a, t_point b, t_env *e)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/19 15:18:03 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/19 19:37:41 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,18 @@
 
 # define LIBFT_H
 # define ABS(Value) (Value < 0 ? Value * -1 : Value)
+# define BUFF_SIZE 4096
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef	struct		s_prlist
+{
+	char			*content;
+	int				fd;
+	struct s_prlist	*next;
+	struct s_prlist	*prev;
+}					t_prlist;
 
 typedef	struct		s_list
 {
@@ -139,5 +148,6 @@ t_point				*ft_t_pointnew(int x, int y);
 void				t_3dpointval(t_3dpoint *point, int x, int y, int z);
 void				ft_putnbrl(int n);
 void				ft_memswitch(void **a, void **b);
+int					get_next_line(const int fd, char **line);
 
 #endif
