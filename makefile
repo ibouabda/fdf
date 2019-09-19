@@ -6,7 +6,7 @@
 #    By: idris <idris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/19 19:39:16 by idris            ###   ########.fr        #
+#    Updated: 2019/09/19 23:15:20 by idris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ $(LIBMLX):
 $(NAME): $(LIB) $(LIBMLX) $(OBJ_NAME)
 	$(CC) -c $(SRC_NAME)
 	$(CC) $(MLX) -o $(NAME) $(OBJ_NAME) libft/libft.a minilibx_macos/libmlx.a
+	rm -f $(OBJ_NAME)
 
 clean:
 	rm -f $(OBJ_NAME)

@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/19 19:32:41 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/19 23:21:02 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void ft_line(t_point a, t_point b, t_env *e)
 	m = (float)(b.y - a.y) / (float)(b.x - a.x);
 	y = a.y;
 	printf("m = %f \n", m);
-	if (m <= 1 && m >= -1)
+	if (m <= 1.0 && m >= -1.0)
 	{
 		while (a.x <= b.x && a.x < e->winx && a.y < e->winy)
 		{
