@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/20 12:56:46 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/20 16:08:57 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ void	table_too_img2(t_env *e, int **dbtab,int size)
 		tabx = 0;
 		while (tabx < size)
 		{
-			t_3dpointval(&z, tabx * 30, taby * 30, dbtab[taby][tabx]);
+			t_3dpointval(&z, tabx * 10, taby * 10, dbtab[taby][tabx]*2);
 			interpret2(&a, &z, e);
 			if (tabx + 1 < size)
 			{
-				t_3dpointval(&z, (tabx + 1) * 30, taby * 30, dbtab[taby][tabx + 1]);
+				t_3dpointval(&z, (tabx + 1) * 10, taby * 10, dbtab[taby][tabx + 1] * 2);
 				interpret2(&b, &z, e);
 				ft_drawline(&a, &b, e);
 			}
 			if (dbtab[taby + 1])
 			{
-				t_3dpointval(&z, tabx * 30, (taby + 1) * 30, dbtab[taby + 1][tabx]);
+				t_3dpointval(&z, tabx * 10, (taby + 1) * 10, dbtab[taby + 1][tabx] * 2);
 				interpret2(&b, &z, e);
 				ft_drawline(&a, &b, e);
 			}

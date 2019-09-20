@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/20 11:13:02 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/20 16:11:58 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 typedef struct	s_env
 {
+	int		zoom;
+	int		alt;
 	int		winx;
 	int		winy;
 	void	*mlx_ptr;

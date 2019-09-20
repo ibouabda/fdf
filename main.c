@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/19 17:31:51 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/20 16:36:53 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ int		checkandparse(int argc, char **argv, int ***dbtab)
 	close(fd);
 	return (size);
 }
+int ft_key_hook(int keycode)
+{
+	if (keycode == 53)
+		exit(0);
+	return (0);
+}
 
 int		main(int argc, char **argv)
 {
@@ -53,6 +59,7 @@ int		main(int argc, char **argv)
 	// table_too_img(&e, dbtab, size);
 	table_too_img2(&e, dbtab, size);
 	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
+	mlx_key_hook(e.mlx_ptr, &ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);
 	ft_2dmemdel((void**)dbtab);
 	return (0);

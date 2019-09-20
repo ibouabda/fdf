@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/20 12:56:18 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/20 16:21:05 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 void ft_find_color(t_point a, t_env *e)
 {
-	ft_fill_pixel(a, a.h * 14, e);
+	ft_fill_pixel(a, a.h * 10, e);
 	
 }
 
@@ -35,9 +35,19 @@ void	ft_fill_pixel(t_point point, int color, t_env *e)
 	int pos;
 
 	pos = point.y * e->winx * 4 + point.x * 4;
-	e->img_string[pos] = (char) 150;
-	e->img_string[pos + 1] = (char) 0;
-	e->img_string[pos + 2] = (char) color;
+	if (color >= 0)
+	{
+		e->img_string[pos] = (char) 150;
+		e->img_string[pos + 1] = (char) 0;
+		e->img_string[pos + 2] = (char) color;
+	}
+	else
+	{
+		e->img_string[pos] = (char) 150 - color;
+		e->img_string[pos + 1] = (char) 0;
+		e->img_string[pos + 2] = (char) 0;
+	}
+	
 }
 
 void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)
@@ -60,7 +70,7 @@ void	create_img(int winx, int winy, t_env *e)
 	e->winx = winx;
 	e->winy = winy;
 	e->mlx_ptr = mlx_init();
-	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"test");
+	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"fdf");
 	e->img_ptr = mlx_new_image(e->mlx_ptr, winx, winy);
 	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
 }
