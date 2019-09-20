@@ -6,21 +6,41 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/20 10:20:44 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/20 12:03:45 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// void ft_find_color(t_point a, t_env *e)
+// {
+// 	int color;
+// 	char *str;
+
+// 	color = 1000;
+// 	str = ft_itoa_base(color, 16);
+// 	ft_fill_pixel(a, ft_strjoin("0x", str), e);
+// 	ft_strdel(&str);
+	
+// }
+
 void ft_find_color(t_point a, t_env *e)
 {
-	int color;
-
-	color = 16711680 + a.h;
-	ft_fill_pixel(a, ft_itoa_base(color, 16), e);
+	ft_fill_pixel(a, a.h * 14, e);
 	
 }
-void	ft_fill_pixel(t_point point, char* color, t_env *e)
+
+void	ft_fill_pixel(t_point point, int color, t_env *e)
+{
+	int pos;
+
+	pos = point.y * e->winx * 4 + point.x * 4;
+	e->img_string[pos] = (char) 255 - color;
+	e->img_string[pos + 1] = (char) 255 - color / 2;
+	e->img_string[pos + 2] = (char) 255;
+}
+
+void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)
 {
 	int pos;
 
@@ -28,6 +48,7 @@ void	ft_fill_pixel(t_point point, char* color, t_env *e)
 	ft_strcpy(e->img_string + pos, color);
 	ft_strcpy(e->img_string + pos + 1, color);
 	ft_strcpy(e->img_string + pos + 2, color);
+	ft_strdel(&color);
 }
 
 void	create_img(int winx, int winy, t_env *e)

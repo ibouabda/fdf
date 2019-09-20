@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/20 10:21:46 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/20 11:13:02 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			create_img(int winx, int winy, t_env *e);
 int				read_file(int fd, int ***dbtab);
 void			ft_exit(int **dbtable, t_list *m);
 void			table_too_img(t_env *e, int **dbtab,int size);
-void			ft_fill_pixel(t_point point, char *color, t_env *e);
+void			ft_fill_pixel(t_point point, int color, t_env *e);
 void			create_img(int winx, int winy, t_env *e);
 void			ft_trylines(t_point *a, t_point *b, t_env *e);
 int				drawline(t_point a, t_point b, t_env *e);
