@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/20 12:03:45 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/20 12:56:18 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_fill_pixel(t_point point, int color, t_env *e)
 	int pos;
 
 	pos = point.y * e->winx * 4 + point.x * 4;
-	e->img_string[pos] = (char) 255 - color;
-	e->img_string[pos + 1] = (char) 255 - color / 2;
-	e->img_string[pos + 2] = (char) 255;
+	e->img_string[pos] = (char) 150;
+	e->img_string[pos + 1] = (char) 0;
+	e->img_string[pos + 2] = (char) color;
 }
 
 void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)
