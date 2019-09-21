@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   table_too_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/20 16:08:57 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/21 14:37:29 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ void	table_too_img2(t_env *e, int **dbtab,int size)
 		tabx = 0;
 		while (tabx < size)
 		{
-			t_3dpointval(&z, tabx * 10, taby * 10, dbtab[taby][tabx]*2);
+			t_3dpointval(&z, tabx * 20, taby * 20, dbtab[taby][tabx]);
 			interpret2(&a, &z, e);
 			if (tabx + 1 < size)
 			{
-				t_3dpointval(&z, (tabx + 1) * 10, taby * 10, dbtab[taby][tabx + 1] * 2);
+				t_3dpointval(&z, (tabx + 1) * 20, taby * 20, dbtab[taby][tabx + 1]);
 				interpret2(&b, &z, e);
 				ft_drawline(&a, &b, e);
 			}
 			if (dbtab[taby + 1])
 			{
-				t_3dpointval(&z, tabx * 10, (taby + 1) * 10, dbtab[taby + 1][tabx] * 2);
+				t_3dpointval(&z, tabx * 20, (taby + 1) * 20, dbtab[taby + 1][tabx]);
 				interpret2(&b, &z, e);
 				ft_drawline(&a, &b, e);
 			}

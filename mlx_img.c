@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/20 16:21:05 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/21 14:22:02 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,4 @@ void	create_img(int winx, int winy, t_env *e)
 	// 	y += 1;
 	// }
 	// mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
-	//mlx_hook(e.win_ptr, 2, (1 << 0), mlx_put_image_to_window, &e);
+	// mlx_hook(e.win_ptr, 2, (1 << 0), mlx_put_image_to_window, &e);
