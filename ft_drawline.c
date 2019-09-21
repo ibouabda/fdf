@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/20 14:59:34 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/21 18:54:13 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void ft_line(t_point a, t_point b, t_env *e)
 	m = (float)(b.y - a.y) / (float)(b.x - a.x);
 	y = a.y;
 	h = a.h;
-	printf("m = %f \n", m);
+	// printf("m = %f \n", m);
 	if (m <= 1.0 && m >= -1.0)
 	{
 		mh = (float)(b.h - a.h) / (float)(b.x - a.x);
 		while (a.x <= b.x && a.x < e->winx && a.y < e->winy)
 		{
-			printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
+			// printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
 			ft_find_color(a, e);
 			y += m;
 			h += mh;
@@ -88,7 +88,7 @@ void ft_drawline(t_point *a, t_point *b, t_env *e)
 {
 	t_point *point;
 
-	printf("a.x = %i a.y = %i b.x = %i b.y = %i\n", a->x, a->y, b->x, b->y);
+	// printf("a.x = %i a.y = %i b.x = %i b.y = %i\n", a->x, a->y, b->x, b->y);
 	if (a->x == b->x)
 	{
 		if (a->y > b->y)

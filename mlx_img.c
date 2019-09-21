@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/21 14:22:02 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/21 19:08:10 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@
 
 void ft_find_color(t_point a, t_env *e)
 {
-	ft_fill_pixel(a, a.h * 10, e);
+	int color;
+
+	color = 0;
+	if (a.h > 0)
+		color = (float)255 * (float)a.h / (float)(e->max * e->alt);
+		printf("color = %i\n", color);
+	if (a.h < 0)
+		color = (float)255 * (float)a.h / (float)(e->min * e->alt);
+	ft_fill_pixel(a, color, e);
 	
 }
 
@@ -35,7 +43,7 @@ void	ft_fill_pixel(t_point point, int color, t_env *e)
 	int pos;
 
 	pos = point.y * e->winx * 4 + point.x * 4;
-	if (color >= 0)
+	if (point.h >= 0)
 	{
 		e->img_string[pos] = (char) 150;
 		e->img_string[pos + 1] = (char) 0;
@@ -43,8 +51,8 @@ void	ft_fill_pixel(t_point point, int color, t_env *e)
 	}
 	else
 	{
-		e->img_string[pos] = (char) 150 - color;
-		e->img_string[pos + 1] = (char) 0;
+		e->img_string[pos] = (char) 150;
+		e->img_string[pos + 1] = (char) color;
 		e->img_string[pos + 2] = (char) 0;
 	}
 	
@@ -61,20 +69,23 @@ void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)
 	ft_strdel(&color);
 }
 
-void	create_img(int winx, int winy, t_env *e)
+void	new_window(int winx, int winy, t_env *e)
+{
+	e->winx = winx * 3;
+	e->winy = winy * 3;
+	e->mlx_ptr = mlx_init();
+	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"fdf");
+}
+
+void new_img(t_env *e)
 {
 	int		bpp;
 	int		s_l;
 	int		endian;
 
-	e->winx = winx;
-	e->winy = winy;
-	e->mlx_ptr = mlx_init();
-	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"fdf");
-	e->img_ptr = mlx_new_image(e->mlx_ptr, winx, winy);
+	e->img_ptr = mlx_new_image(e->mlx_ptr, e->winx, e->winy);
 	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
 }
-
 	// while (y < 720 && x < 1280 )
 	// {
 	// 	fill_pixel(e.img_string, x, y, 255);

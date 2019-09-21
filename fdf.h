@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/21 16:26:14 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/21 18:17:37 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 
 # define ESC 53
 
-# define LEFT_CLICK 1
-# define RIGHT_CLICK 2
-# define SCROLL_UP 4
-# define SCROLL_DOWN 5
+// dont work :
+// # define LEFT_CLICK 1
+// # define RIGHT_CLICK 2
+// # define SCROLL_UP 4
+// # define SCROLL_DOWN 5
 
 # define A 0
 # define B 11
 # define C 8
 # define D 2
-# define E 4
+// # define E 4
 # define F 3
 # define G 9
 # define H 4
@@ -77,6 +78,12 @@ typedef struct	s_env
 {
 	int		zoom;
 	int		alt;
+	int		max;
+	int		min;
+	int		**dbtab;
+	int		size;
+	int		posx;
+	int		posy;
 	int		winx;
 	int		winy;
 	void	*mlx_ptr;
@@ -99,9 +106,11 @@ void			ft_fill_pixel(t_point point, int color, t_env *e);
 void			create_img(int winx, int winy, t_env *e);
 void			ft_trylines(t_point *a, t_point *b, t_env *e);
 int				drawline(t_point a, t_point b, t_env *e);
-void			table_too_img2(t_env *e, int **dbtab,int size);
+void			table_too_img2(t_env *e);
 int				drawvertical(t_point a, t_point b, t_env *e);
 void			ft_drawline(t_point *a, t_point *b, t_env *e);
 void			ft_find_color(t_point a, t_env *e);
+void			new_window(int winx, int winy, t_env *e);
+void			new_img(t_env *e);
 
 #endif
