@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/22 20:27:43 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/23 00:07:00 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void highline(t_point a, t_point b, t_env *e)
 	m = (float)(b.x - a.x) / (float)(b.y - a.y);
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
-	while (a.y <= b.y && a.x < e->winx && a.y < e->winy && a.x > 0 && a.y > 0)
+	while (a.y <= b.y && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
 	{
 		ft_find_color(a, e);
 		x += m;
@@ -55,7 +55,7 @@ void ft_line(t_point a, t_point b, t_env *e)
 	if (m <= 1.0 && m >= -1.0)
 	{
 		mh = (float)(b.h - a.h) / (float)(b.x - a.x);
-		while (a.x <= b.x && a.x < e->winx && a.y < e->winy && a.x > 0 && a.y > 0)
+		while (a.x <= b.x && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
 		{
 			// printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
 			ft_find_color(a, e);
@@ -77,7 +77,7 @@ void ft_vertical(t_point a, t_point b, t_env *e)
 	
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
-	while (a.y <= b.y && a.x < e->winx && a.y < e->winy && a.x > 0 && a.y > 0)
+	while (a.y <= b.y && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
 	{
 		ft_find_color(a, e);
 		a.y++;
@@ -93,7 +93,7 @@ void ft_horizontal(t_point a, t_point b, t_env *e)
 	
 	mh = (float)(b.h - a.h) / (float)(b.x - a.x);
 	h = a.h;
-	while (a.x <= b.x && a.x < e->winx && a.y < e->winy && a.x > 0 && a.y > 0)
+	while (a.x <= b.x && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
 	{
 		ft_find_color(a, e);
 		a.x++;
@@ -125,9 +125,9 @@ void ft_drawline(t_point *a, t_point *b, t_env *e) //horizontal a ajouter
 			a = b;
 			b = point;
 		}
-		if (a->y == b->y)
-			ft_horizontal(*a, *b, e);
-		else
+		// if (a->y == b->y)
+		// 	ft_horizontal(*a, *b, e);
+		// else
 			ft_line(*a, *b, e);
 	}
 }
