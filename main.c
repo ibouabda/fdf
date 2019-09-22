@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/21 19:06:26 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/22 12:28:19 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,28 @@ int ft_key_hook(int keycode, t_env *e)
 	{
 		e->zoom += 1;
 		new_img(e);
-		table_too_img2(e);
+		table_too_img(e);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img_ptr, e->posx, e->posy);
 	}
 	if (keycode == S)
 	{
 		e->zoom -= 1;
 		new_img(e);
-		table_too_img2(e);
+		table_too_img(e);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img_ptr, e->posx, e->posy);
 	}
 	if (keycode == F)
 	{
 		e->alt += 1;
 		new_img(e);
-		table_too_img2(e);
+		table_too_img(e);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img_ptr, e->posx, e->posy);
 	}
 	if (keycode == D)
 	{
 		e->alt -= 1;
 		new_img(e);
-		table_too_img2(e);
+		table_too_img(e);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img_ptr, e->posx, e->posy);
 	}
 	if (keycode == UP_ARROW)
@@ -111,6 +111,10 @@ void ft_maxmin(t_env *e)
 		tabx = 0;
 		taby++;
 	}
+	if (e->min >= 0)
+		e->min = e->max;
+	if (e->max <= 0)
+		e->max = e->min;
 }
 
 int main(int argc, char **argv)
@@ -121,13 +125,11 @@ int main(int argc, char **argv)
 	e.alt = 1;
 	e.posx = 0;
 	e.posy = 0;
-	e.min = 0;
-	e.max = 0;
 	e.size = checkandparse(argc, argv, &e.dbtab);
 	new_window(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
 	new_img(&e);
 	ft_maxmin(&e);
-	table_too_img2(&e);
+	table_too_img(&e);
 	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
 	mlx_hook(e.win_ptr, 2, (1 << 0), ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);

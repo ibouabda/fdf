@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/21 18:54:13 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/22 12:57:58 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,23 @@ void ft_vertical(t_point a, t_point b, t_env *e)
 	}
 }
 
-void ft_drawline(t_point *a, t_point *b, t_env *e)
+void ft_horizontal(t_point a, t_point b, t_env *e)
+{
+	float h;
+	float mh;
+	
+	mh = (float)(b.h - a.h) / (float)(b.x - a.x);
+	h = a.h;
+	while (a.x <= b.x && a.x < e->winx && a.y < e->winy)
+	{
+		ft_find_color(a, e);
+		a.x++;
+		h += mh;
+		a.h = (int)(h + 0.5);
+	}
+}
+
+void ft_drawline(t_point *a, t_point *b, t_env *e) //horizontal a ajouter
 {
 	t_point *point;
 
@@ -107,6 +123,9 @@ void ft_drawline(t_point *a, t_point *b, t_env *e)
 			a = b;
 			b = point;
 		}
-		ft_line(*a, *b, e);
+		if (a->y == b->y)
+			ft_horizontal(*a, *b, e);
+		else
+			ft_line(*a, *b, e);
 	}
 }

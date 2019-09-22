@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/21 19:08:10 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/22 12:59:52 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void ft_find_color(t_point a, t_env *e)
 
 	color = 0;
 	if (a.h > 0)
-		color = (float)255 * (float)a.h / (float)(e->max * e->alt);
-		printf("color = %i\n", color);
+		color = ABS(255 * a.h / (float)(e->max * e->alt));
 	if (a.h < 0)
-		color = (float)255 * (float)a.h / (float)(e->min * e->alt);
+		color = ABS(255 * a.h / (float)(e->min * e->alt));
+	// if (color != 0)
+		// printf("color = %i, e->min = %i, e->alt = %i\n", color, e->min, e->alt);
 	ft_fill_pixel(a, color, e);
 	
 }
