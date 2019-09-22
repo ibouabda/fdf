@@ -6,7 +6,7 @@
 #    By: idris <idris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/20 11:38:05 by idris            ###   ########.fr        #
+#    Updated: 2019/09/22 17:25:38 by idris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 MLX = -framework OpenGL -framework AppKit
 
-CC = gcc -g
+CC = gcc -g -fsanitize=address
 
 SRC_NAME = main.c read_file.c ft_fdf.c table_too_img.c mlx_img.c\
 			ft_drawline.c

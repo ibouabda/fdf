@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/22 12:59:52 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/22 18:54:44 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,20 @@ void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)
 
 void	new_window(int winx, int winy, t_env *e)
 {
-	e->winx = winx * 3;
-	e->winy = winy * 3;
+	e->winx = winx;
+	e->winy = winy;
 	e->mlx_ptr = mlx_init();
 	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"fdf");
+}
+
+void img(t_env *e)
+{
+	int		bpp;
+	int		s_l;
+	int		endian;
+
+	e->img_ptr = mlx_new_image(e->mlx_ptr, e->winx, e->winy);
+	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
 }
 
 void new_img(t_env *e)
@@ -84,6 +94,7 @@ void new_img(t_env *e)
 	int		s_l;
 	int		endian;
 
+	mlx_destroy_image(e->mlx_ptr, e->img_ptr);
 	e->img_ptr = mlx_new_image(e->mlx_ptr, e->winx, e->winy);
 	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
 }
