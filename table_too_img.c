@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/23 00:16:29 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/23 00:29:54 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_point interpret(int x, int y, int z, t_env *e)
 
 	return (point);
 }
+
 void	line_too_img(t_env *e, int taby)
 {
 	int tabx;
