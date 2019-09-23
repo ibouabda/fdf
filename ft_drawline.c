@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/23 16:03:23 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/23 16:39:01 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,10 +165,13 @@ void ft_switchpoint(t_point **a, t_point **b)
 	free(point);
 }
 
-void ft_drawline(t_point *a, t_point *b, t_env *e)
+int ft_drawline(t_point *a, t_point *b, t_env *e)
 {
 	float m;
 
+	if ((a->x > e->winx || a->y > e->winy || a->x < 0 || a->y < 0)
+	&& (b->x > e->winx || b->y > e->winy || b->x < 0 || b->y < 0))
+		return (0);
 	if (a->x == b->x)
 		(a->y < b->y) ? ft_vertical(*a, *b, e) : ft_vertical2(*a, *b, e);
 	else
@@ -182,5 +185,6 @@ void ft_drawline(t_point *a, t_point *b, t_env *e)
 			(a->y < b->y) ? highline(*a, *b, e, m) : highline(*a, *b, e, m);
 		}
 	}
+	return (1);
 }
 	// printf("a.x = %i a.y = %i b.x = %i b.y = %i\n", a->x, a->y, b->x, b->y);

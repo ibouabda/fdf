@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/22 20:39:03 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/23 16:32:01 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void			create_img(int winx, int winy, t_env *e);
 void			ft_trylines(t_point *a, t_point *b, t_env *e);
 int				drawline(t_point a, t_point b, t_env *e);
 int				drawvertical(t_point a, t_point b, t_env *e);
-void			ft_drawline(t_point *a, t_point *b, t_env *e);
+int				ft_drawline(t_point *a, t_point *b, t_env *e);
 void			ft_find_color(t_point a, t_env *e);
 void			new_window(int winx, int winy, t_env *e);
 void			new_img(t_env *e);
