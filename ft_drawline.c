@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/23 16:01:01 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/23 16:03:23 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void highline(t_point a, t_point b, t_env *e, float m)
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
 	// printf("highline\n");
-	while (a.y <= b.y && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+	while (a.y <= b.y)
 	{
-		ft_find_color(a, e);
+		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+			ft_find_color(a, e);
 		x += m;
 		a.x = (int)(x + 0.5);
 		a.y++;
@@ -43,9 +44,10 @@ void highline2(t_point a, t_point b, t_env *e, float m)
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
 	// printf("highline2\n");
-	while (a.y >= b.y && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+	while (a.y >= b.y)
 	{
-		ft_find_color(a, e);
+		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+			ft_find_color(a, e);
 		x -= m;
 		a.x = (int)(x + 0.5);
 		a.y--;
@@ -65,10 +67,11 @@ void ft_line(t_point a, t_point b, t_env *e, float m)
 	// printf("line\n");
 	// printf("m = %f \n", m);
 		mh = (float)(b.h - a.h) / (float)(b.x - a.x);
-		while (a.x <= b.x && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+		while (a.x <= b.x)
 		{
 			// printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
-			ft_find_color(a, e);
+			if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+				ft_find_color(a, e);
 			y += m;
 			h += mh;
 			a.y = (int)(y + 0.5);
@@ -89,10 +92,11 @@ void ft_line2(t_point a, t_point b, t_env *e, float m)
 	// printf("line2\n");
 	// printf("m = %f \n", m);
 		mh = (float)(b.h - a.h) / (float)(b.x - a.x);
-		while (a.x >= b.x && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+		while (a.x >= b.x)
 		{
 			// printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
-			ft_find_color(a, e);
+			if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+				ft_find_color(a, e);
 			y -= m;
 			h -= mh;
 			a.y = (int)(y + 0.5);
@@ -108,9 +112,10 @@ void ft_vertical(t_point a, t_point b, t_env *e)
 	
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
-	while (a.y <= b.y && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+	while (a.y <= b.y)
 	{
-		ft_find_color(a, e);
+		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+			ft_find_color(a, e);
 		a.y++;
 		h += mh;
 		a.h = (int)(h + 0.5);
@@ -124,9 +129,10 @@ void ft_vertical2(t_point a, t_point b, t_env *e)
 	
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
-	while (a.y >= b.y && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+	while (a.y >= b.y)
 	{
-		ft_find_color(a, e);
+		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
+			ft_find_color(a, e);
 		a.y--;
 		h -= mh;
 		a.h = (int)(h + 0.5);
