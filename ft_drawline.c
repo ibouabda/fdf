@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/24 10:29:32 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/24 21:16:12 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ int ft_drawline(t_point *a, t_point *b, t_env *e)
 		else
 		{
 			m = (float)(b->x - a->x) / (float)(b->y - a->y);
-			(a->y < b->y) ? highline(*a, *b, e, m) : highline(*a, *b, e, m);
+			(a->y < b->y) ? highline(*a, *b, e, m) : highline2(*a, *b, e, m);
 		}
 	}
 	return (1);

@@ -14,7 +14,8 @@
 		"string_view": "c",
 		"unordered_map": "c",
 		"utility": "c",
-		"vector": "c"
+		"vector": "c",
+		"__config": "cpp"
 	},
 	"files.exclude": {
 		"**/*.o": true
