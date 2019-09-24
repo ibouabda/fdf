@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/24 12:56:09 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/24 15:04:09 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ t_point interpret(int x, int y, int z, t_env *e)
 
 	// point.x = e->posx + (x - z) / sqrt(2);
 	// point.y = e->posy + (x + 2 * y + z) / sqrt(6);
-	// if (z == 0)
-		// z = 1;
-	point.x = e->winx / 2 + (100 * (x - e->posx)) / (100 + z) + e->posx;
-	point.y = e->winy / 2 + (100 * (y - e->posy)) / (100 + z) + e->posy;
+	//  if (z == 0)
+	// 	z = 1;
+	// point.x = e->posx + (x / z);
+	// point.y = e->posy + (y / z);
+	point.x = e->winx / 3 + (100 * (x - e->posx)) / (100 + z) + e->posx;
+	point.y = e->winy / 3 + (100 * (y - e->posy)) / (100 + z) + e->posy;
+	// point.x = e->posx + (x / z);
+	// point.y = e->posy + (y / z);
+	// point.x = e->posx + (x + z);
+	// point.y = e->posy + (y - z);
 	point.h = z;
-
 	return (point);
 }
 
