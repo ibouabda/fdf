@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/23 16:32:01 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/25 11:05:13 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,18 @@
 
 typedef struct	s_env
 {
+	int		proj;
 	int		zoom;
 	int		alt;
 	int		max;
 	int		min;
 	int		**dbtab;
 	int		size;
+	int		sizey;
 	int		posx;
 	int		posy;
+	int		angx;
+	int		angy;
 	int		winx;
 	int		winy;
 	void	*mlx_ptr;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/24 12:49:17 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/25 11:20:37 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,25 @@ int checkandparse(int argc, char **argv, int ***dbtab)
 
 int ft_key_hook(int keycode, t_env *e)
 {
+	if (keycode == P)
+		e->proj == 0 ? e->proj++ : e->proj--;
 	if (keycode == ESC)
 		ft_exit(0, e->dbtab, NULL);
-	if (keycode == W)
+	if (keycode == R)
+	{
 		e->zoom += 5;
-	if (keycode == S && e->zoom > 5)
+		e->posx = e->posx - e->size * 5 / 2;
+		e->posy = e->posy - e->sizey * 5 / 2;
+	}
+	if (keycode == F && e->zoom > 5)
+	{
+		e->posx = e->posx + e->size * 5 / 2;
+		e->posy = e->posy + e->sizey * 5 / 2;
 		e->zoom -= 5;
-	if (keycode == F)
+	}
+	if (keycode == X && e->max * (e->alt + 5) < 1000)
 		e->alt += 5;
-	if (keycode == D)
+	if (keycode == Z)
 		e->alt -= 5;
 	if (keycode == UP_ARROW)
 		e->posy -= 10;
@@ -55,10 +65,19 @@ int ft_key_hook(int keycode, t_env *e)
 		e->posx += 10;
 	if (keycode == LEFT_ARROW)
 		e->posx -= 10;
+	if (keycode == W)
+		e->angy -= 10;
+	if (keycode == S)
+		e->angy += 10;
+	if (keycode == D)
+		e->angx += 10;
+	if (keycode == A)
+		e->angx -= 10;
+	printf("e->alt = %i\n", e->alt);
 	new_img(e);
 	table_too_img(e);
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img_ptr, 0, 0);
-	printf("e->posx : %i\ne->posy : %i\n", e->posx, e->posy);
+	// printf("e->posx : %i\ne->posy : %i\n", e->posx, e->posy);
 	return (0);
 }
 
@@ -87,21 +106,24 @@ void ft_maxmin(t_env *e)
 		e->min = e->max;
 	if (e->max <= 0)
 		e->max = e->min;
+	e->sizey = taby;
 }
 
 int main(int argc, char **argv)
 {
 	t_env e;
 
+	e.angx = 0;
+	e.angy = 0;
 	e.zoom = 20;
 	e.alt = 1;
 	e.size = checkandparse(argc, argv, &e.dbtab);
 	new_window(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
-	e.posx = e.winx / 3;
-	e.posy = e.winy / 3;
 	printf("posx : %i, posy : %i\n", e.posx, e.posy);
 	img(&e);
 	ft_maxmin(&e);
+	e.posx = e.winx / 2 - e.size * e.zoom;
+	e.posy = e.winy / 2 - e.sizey * e.zoom;
 	table_too_img(&e);
 	printf("winx : %i, winy : %i\n", e.winx, e.winy);
 	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
