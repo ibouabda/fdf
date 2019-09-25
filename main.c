@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/25 11:20:37 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/25 11:57:37 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int ft_key_hook(int keycode, t_env *e)
 		e->angx += 10;
 	if (keycode == A)
 		e->angx -= 10;
-	printf("e->alt = %i\n", e->alt);
+	// printf("e->alt = %i\n", e->alt);
 	new_img(e);
 	table_too_img(e);
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img_ptr, 0, 0);
-	// printf("e->posx : %i\ne->posy : %i\n", e->posx, e->posy);
+	printf("e->posx : %i\ne->posy : %i\n", e->posx, e->posy);
 	return (0);
 }
 
@@ -119,13 +119,18 @@ int main(int argc, char **argv)
 	e.alt = 1;
 	e.size = checkandparse(argc, argv, &e.dbtab);
 	new_window(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
-	printf("posx : %i, posy : %i\n", e.posx, e.posy);
+	// printf("posx : %i, posy : %i\n", e.posx, e.posy);
 	img(&e);
 	ft_maxmin(&e);
-	e.posx = e.winx / 2 - e.size * e.zoom;
-	e.posy = e.winy / 2 - e.sizey * e.zoom;
+	t_point a;
+	t_point b;
+	a = interpret(0, 0, e.dbtab[0][0] * e.alt, &e);
+	b = interpret((e.size - 1) * e.zoom, (e.sizey - 1) * e.zoom, e.dbtab[e.sizey - 1][e.size - 1] * e.alt, &e);
+	e.posx = e.winx / 2 - (b.x - a.x);
+	e.posy = e.winy / 2 - (b.y - a.y);
+	printf("e.posx : %i e.posy : %i\n", e.posx, e.posy);
 	table_too_img(&e);
-	printf("winx : %i, winy : %i\n", e.winx, e.winy);
+	// printf("winx : %i, winy : %i\n", e.winx, e.winy);
 	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
 	mlx_hook(e.win_ptr, 2, (1 << 0), ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);

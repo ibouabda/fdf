@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/25 11:05:13 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/25 11:35:24 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ void			ft_find_color(t_point a, t_env *e);
 void			new_window(int winx, int winy, t_env *e);
 void			new_img(t_env *e);
 void			img(t_env *e);
+t_point			interpret(int x, int y, int z, t_env *e);
 
 #endif
