@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/25 11:57:37 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/25 16:14:03 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void zoom(int keycode, t_env *e)
+{
+	t_point a;
+	t_point b;
+	t_point a2;
+	t_point b2;
+
+	a = interpret(0, 0, e->dbtab[0][0], e);
+	b = interpret(e->size - 1, e->sizey - 1, 0, e);
+	if (keycode == R)
+		e->zoom += 5;
+	if (keycode == F)
+		e->zoom -= 5;
+	a2 = interpret(0, 0, e->dbtab[0][0], e);
+	b2 = interpret(e->size - 1, e->sizey - 1, 0, e);
+	e->posx = e->posx - ((b2.x - a2.x) - (b.x - a.x)) / 2;
+	e->posy = e->posy - ((b2.y - a2.y) - (b.y - a.y)) / 2;
+}
 
 int checkandparse(int argc, char **argv, int ***dbtab)
 {
@@ -35,28 +54,41 @@ int checkandparse(int argc, char **argv, int ***dbtab)
 	return (size);
 }
 
+void begin(t_env *e)
+{
+	t_point a;
+	t_point b;
+
+	e->angx = 0;
+	e->angy = 0;
+	e->zoom = 5;
+	e->posx = 0;
+	e->posy = 0;
+	e->alt = 1;
+	a = interpret(0, 0, e->dbtab[0][0], e);
+	b = interpret((e->size - 1), (e->sizey - 1), e->dbtab[e->sizey - 1][e->size - 1], e);
+	e->posx = (e->winx / 2 - (b.x - a.x) / 2);
+	e->posy = (e->winy / 2 - (b.y - a.y) / 2);
+}
 int ft_key_hook(int keycode, t_env *e)
 {
+	if (keycode == ENTER)
+		begin(e);
 	if (keycode == P)
+	{
 		e->proj == 0 ? e->proj++ : e->proj--;
+		begin(e);
+	}
 	if (keycode == ESC)
 		ft_exit(0, e->dbtab, NULL);
 	if (keycode == R)
-	{
-		e->zoom += 5;
-		e->posx = e->posx - e->size * 5 / 2;
-		e->posy = e->posy - e->sizey * 5 / 2;
-	}
+		zoom(keycode, e);
 	if (keycode == F && e->zoom > 5)
-	{
-		e->posx = e->posx + e->size * 5 / 2;
-		e->posy = e->posy + e->sizey * 5 / 2;
-		e->zoom -= 5;
-	}
-	if (keycode == X && e->max * (e->alt + 5) < 1000)
-		e->alt += 5;
+		zoom(keycode, e);
+	if (keycode == X /*&& ((e->proj == 0) || (e->proj == 1 && e->max * (e->alt + 5) < 1000 && e->min * (e->alt + 5) > -1000))*/)
+		e->alt += 1;
 	if (keycode == Z)
-		e->alt -= 5;
+		e->alt -= 1;
 	if (keycode == UP_ARROW)
 		e->posy -= 10;
 	if (keycode == DOWN_ARROW)
@@ -113,25 +145,15 @@ int main(int argc, char **argv)
 {
 	t_env e;
 
-	e.angx = 0;
-	e.angy = 0;
-	e.zoom = 20;
-	e.alt = 1;
+	e.proj = 0;
 	e.size = checkandparse(argc, argv, &e.dbtab);
 	new_window(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
-	// printf("posx : %i, posy : %i\n", e.posx, e.posy);
 	img(&e);
 	ft_maxmin(&e);
-	t_point a;
-	t_point b;
-	a = interpret(0, 0, e.dbtab[0][0] * e.alt, &e);
-	b = interpret((e.size - 1) * e.zoom, (e.sizey - 1) * e.zoom, e.dbtab[e.sizey - 1][e.size - 1] * e.alt, &e);
-	e.posx = e.winx / 2 - (b.x - a.x);
-	e.posy = e.winy / 2 - (b.y - a.y);
 	printf("e.posx : %i e.posy : %i\n", e.posx, e.posy);
-	table_too_img(&e);
-	// printf("winx : %i, winy : %i\n", e.winx, e.winy);
-	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
+	// table_too_img(&e);
+	// // printf("winx : %i, winy : %i\n", e.winx, e.winy);
+	// mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
 	mlx_hook(e.win_ptr, 2, (1 << 0), ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);
 	ft_2dmemdel((void **)e.dbtab);

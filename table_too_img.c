@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   table_too_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/25 10:57:24 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/25 16:28:00 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 t_point interpret(int x, int y, int z, t_env *e)
 {
 	t_point point;
-
+	
+	x = x * e->zoom;
+	y = y * e->zoom;
+	z = z * e->alt;
+	point.h = z;
+	z = z * e->zoom;
 	if (e->proj == 0)
 	{
 		point.x = e->posx + (x - z) / sqrt(2);
@@ -26,7 +31,6 @@ t_point interpret(int x, int y, int z, t_env *e)
 		point.x = e->posx + (1000 * (x - e->angx)) / (1000 - z) + e->angx;
 		point.y = e->posy + (1000 * (y - e->angy)) / (1000 - z) + e->angy;
 	}
-	point.h = z;
 	return (point);
 }
 
@@ -39,18 +43,15 @@ void	line_too_img(t_env *e, int taby)
 	tabx = 0;
 	while (tabx < e->size)
 	{
-		a = interpret(tabx * e->zoom, taby * e->zoom,
-		e->dbtab[taby][tabx] * e->alt, e);
+		a = interpret(tabx, taby, e->dbtab[taby][tabx], e);
 		if (tabx + 1 < e->size)
 		{
-			b = interpret((tabx + 1) * e->zoom, taby * e->zoom,
-			e->dbtab[taby][tabx + 1] * e->alt, e);
+			b = interpret((tabx + 1), taby, e->dbtab[taby][tabx + 1], e);
 			ft_drawline(&a, &b, e);
 		}
 		if (e->dbtab[taby + 1])
 		{
-			b = interpret(tabx * e->zoom, (taby + 1) * e->zoom,
-			e->dbtab[taby + 1][tabx] * e->alt, e);
+			b = interpret(tabx, (taby + 1), e->dbtab[taby + 1][tabx], e);
 			ft_drawline(&a, &b, e);
 		}
 		tabx++;
