@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/22 20:40:35 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/26 18:02:25 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int		ft_analyze_line(char *line)
 		while (ft_isdigit(line[i]))
 			i++;
 		if (line[i] == ' ' && i - var < 5)
-			i++;
+		{
+			while (line[i] == ' ')
+				i++;
+		}
 		else if (line[i] || i - var >= 5)
 			return (0);
 		nbvar++;
@@ -71,7 +74,7 @@ int		*ft_insert_nb(char *str, int nbvar)
 		tab[k] = ft_atoi(str + i);
 		while (str[i] && str[i] != ' ')
 			i++;
-		if (str[i] == ' ')
+		while (str[i] == ' ')
 			i++;
 		k++;
 	}
@@ -109,14 +112,14 @@ int		read_file(int fd, int ***dbtab)
 	{
 		ft_lstaddend(&m, ft_lstnewd(line, 0));
 		if (!line[0])
-			ft_exit(0, *dbtab, m);
+			ft_exit(1, *dbtab, m);
 		size++;
 	}
 	if (line[0])
-		ft_exit(0, *dbtab, m);
+		ft_exit(1, *dbtab, m);
 	ft_strdel(&line);
 	if (!m || !((char *)m->content)[0] || (nbvar = ft_check_line(m)) == 0)
-		ft_exit(0, *dbtab, m);
+		ft_exit(1, *dbtab, m);
 	*dbtab = create_dbtable(m, size, nbvar);
 	ft_lstdelstr(m);
 	return (nbvar);

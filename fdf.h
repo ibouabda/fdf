@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/26 09:17:10 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/26 16:29:41 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define B 11
 # define C 8
 # define D 2
-// # define E 4
+# define E 14
 # define F 3
 # define G 9
 # define H 4
@@ -49,6 +49,9 @@
 # define Y 16
 # define Z 6
 
+# define TWO 19
+# define THREE 20
+
 # define ONE_NUM_PAD 83
 # define TWO_NUM_PAD 84
 # define THREE_NUM_PAD 85
@@ -68,12 +71,16 @@
 # define UP_ARROW 126
 
 # define FDF "FDF"
-# define BEGIN "Press On ENTER"
-# define Move "Move : Arrows"
-# define Angle "Change Angle : WASD"
-# define Zoom "Zoom/Unzoom : R/F"
-# define INC "Increase/Decrease : Z/X"
-# define PAUSE "Pause : P"
+# define BEGIN "Let's Play : Press On ENTER"
+// # define INSTR "Instructions :"
+# define PROJ "Change Projection : P"
+# define MOVE "Move : Arrows"
+# define ANGLE "Change Angle : WASD"
+# define ZOOM "Zoom/Unzoom : 2/3"
+# define INC "Increase/Decrease : Q/E"
+# define PAUSE "Pause : ESC"
+# define RESET "RESET : R"
+# define QUIT "If You Wanna Quit The Game Press On ESC"
 
 # define ENTER 36
 
@@ -86,8 +93,10 @@
 
 typedef struct	s_env
 {
+	int		bool;
 	int		proj;
 	int		zoom;
+	int		zoomalt;
 	int		alt;
 	int		max;
 	int		min;
@@ -102,6 +111,7 @@ typedef struct	s_env
 	int		winy;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*esc_img_ptr;
 	void	*img_ptr;
 	char	*img_string;
 }				t_env;
@@ -128,5 +138,6 @@ void			new_img(t_env *e);
 void			img(t_env *e);
 t_point			interpret(int x, int y, int z, t_env *e);
 void			interface(t_env *e);
+void			pause2(t_env *e);
 
 #endif

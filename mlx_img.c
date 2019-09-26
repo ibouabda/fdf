@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/25 16:26:17 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/26 18:51:05 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void ft_find_color(t_point a, t_env *e)
 		color = ABS(255 * a.h / (float)(e->max * e->alt));
 	if (a.h < 0)
 		color = ABS(255 * a.h / (float)(e->min * e->alt));
-	// if (color != 0)
-		// printf("color = %i, e->min = %i, e->alt = %i\n", color, e->min, e->alt);
+	if (color != 0)
+		printf("color = %i, a.h = %i, e->alt = %i\n", color, a.h, e->alt);
 	ft_fill_pixel(a, color, e);
 	
 }
@@ -56,7 +56,6 @@ void	ft_fill_pixel(t_point point, int color, t_env *e)
 		e->img_string[pos + 1] = (char) color;
 		e->img_string[pos + 2] = (char) 0;
 	}
-	
 }
 
 void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)

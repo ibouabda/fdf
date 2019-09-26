@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/25 16:28:00 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/26 16:58:15 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ t_point interpret(int x, int y, int z, t_env *e)
 	y = y * e->zoom;
 	z = z * e->alt;
 	point.h = z;
-	z = z * e->zoom;
 	if (e->proj == 0)
 	{
+		z = z * e->zoom / 20; // division par 20 a observer
 		point.x = e->posx + (x - z) / sqrt(2);
 		point.y = e->posy + (x + 2 * y + z) / sqrt(6);
 	}
