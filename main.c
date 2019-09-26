@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/25 16:14:03 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/26 09:19:10 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,11 +149,12 @@ int main(int argc, char **argv)
 	e.size = checkandparse(argc, argv, &e.dbtab);
 	new_window(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
 	img(&e);
+	interface(&e);
 	ft_maxmin(&e);
 	printf("e.posx : %i e.posy : %i\n", e.posx, e.posy);
 	// table_too_img(&e);
 	// // printf("winx : %i, winy : %i\n", e.winx, e.winy);
-	// mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
+	mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
 	mlx_hook(e.win_ptr, 2, (1 << 0), ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);
 	ft_2dmemdel((void **)e.dbtab);

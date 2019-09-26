@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/25 13:29:30 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/26 09:17:10 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,14 @@
 # define DOWN_ARROW 125
 # define UP_ARROW 126
 
+# define FDF "FDF"
+# define BEGIN "Press On ENTER"
+# define Move "Move : Arrows"
+# define Angle "Change Angle : WASD"
+# define Zoom "Zoom/Unzoom : R/F"
+# define INC "Increase/Decrease : Z/X"
+# define PAUSE "Pause : P"
+
 # define ENTER 36
 
 # include "libft/libft.h"
@@ -119,5 +127,6 @@ void			new_window(int winx, int winy, t_env *e);
 void			new_img(t_env *e);
 void			img(t_env *e);
 t_point			interpret(int x, int y, int z, t_env *e);
+void			interface(t_env *e);
 
 #endif
