@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
+#    By: idris <idris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/27 18:24:51 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/09/27 19:16:18 by idris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 MLX = -framework OpenGL -framework AppKit
 
-CC = gcc -fsanitize=address
+CC = gcc -g
 
 SRC_NAME = main.c read_file.c ft_fdf.c table_too_img.c mlx_img.c\
 			ft_drawline.c

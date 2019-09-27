@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/27 18:43:57 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/27 19:32:22 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,9 @@ int ft_key_hook(int keycode, t_env *e)
 		if (keycode == S)
 			e->angy += 10;
 		if (keycode == D)
-			e->angx += 10;
+			e->angx += 100;
 		if (keycode == A)
-			e->angx -= 10;
+			e->angx -= 100;
 		if (e->bool == 1)
 		{
 			new_img(e);
