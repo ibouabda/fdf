@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/26 18:44:38 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/27 12:22:04 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ void ft_maxmin(t_env *e)
 	int tabx;
 
 	taby = 0;
-	tabx = 0;
+	e->max = 0;
+	e->min = 0;
 
 	while (e->dbtab[taby])
 	{
+		tabx = 0;
 		while (tabx < e->size)
 		{
 			if (e->dbtab[taby][tabx] > e->max)
@@ -49,7 +51,6 @@ void ft_maxmin(t_env *e)
 				e->min = e->dbtab[taby][tabx];
 			tabx++;
 		}
-		tabx = 0;
 		taby++;
 	}
 	if (e->min >= 0)
@@ -198,6 +199,7 @@ int main(int argc, char **argv)
 	ft_2dmemdel((void **)e.dbtab);
 	img(&e);
 	e.size = checkandparse(argc, argv[1], &e.dbtab);
+	ft_2dputtabint(e.dbtab, e.size);
 	begin(&e);
 	mlx_hook(e.win_ptr, 2, (1 << 0), ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);

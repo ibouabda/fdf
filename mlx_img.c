@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/26 18:51:05 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/27 12:19:32 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void ft_find_color(t_point a, t_env *e)
 
 	color = 0;
 	if (a.h > 0)
-		color = ABS(255 * a.h / (float)(e->max * e->alt));
+		color = ABS(255 * (a.h / (float)(e->max * e->alt)));
 	if (a.h < 0)
-		color = ABS(255 * a.h / (float)(e->min * e->alt));
-	if (color != 0)
-		printf("color = %i, a.h = %i, e->alt = %i\n", color, a.h, e->alt);
+		color = ABS(255 * (a.h / (float)(e->min * e->alt)));
+	// if (color != 0)
+		printf("color = %i, a.h = %i, e->max = %i, e->min = %i, e->alt = %i\n", color, a.h, e->max, e->min, e->alt);
 	ft_fill_pixel(a, color, e);
 	
 }
