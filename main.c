@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/27 12:22:04 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/27 18:43:57 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int checkandparse(int argc, char *argv, int ***dbtab)
 
 	if (argc != 4)
 	{
-		ft_putendl("usage: ./fillit target_file [weidth_size long_size]");
+		ft_putendl("usage: ./fdf target_file [400 <= weidth_size <= 2560]\
+		[800 <= long_size <= 1440]");
 		exit(1);
 	}
 	fd_dir = open(argv, O_DIRECTORY);
@@ -151,10 +152,10 @@ int ft_key_hook(int keycode, t_env *e)
 		if (keycode == THREE || (keycode == TWO && e->zoom > 5))
 			zoom(keycode, e);
 		if (keycode == Q && ((e->proj == 0) || e->max < 0
-		|| (e->proj == 1 && e->max * (e->alt + 4) < 1000)))
+		|| (e->proj == 1 && e->max * (e->alt + 8) < 1000)))
 			e->alt += 4;
 		if (keycode == E && ((e->proj == 0) || e->min > 0
-		|| (e->proj == 1 && e->min * (e->alt - 4) < 1000)))
+		|| (e->proj == 1 && e->min * (e->alt - 8) < 1000)))
 			e->alt -= 4;   
 		if (keycode == UP_ARROW)
 			e->posy -= 10;
@@ -179,17 +180,28 @@ int ft_key_hook(int keycode, t_env *e)
 			mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img_ptr, 0, 0);
 		}
 	}
-	printf("e->alt : %i\ne->min : %i\n", e->alt, e->min);
+	// printf("e->alt : %i\ne->min : %i\n", e->alt, e->min);
 	return (0);
 }
-
+void ft_verifscreensize(t_env *e, char **argv)
+{
+	e->winx = ft_atoi(argv[2]);
+	e->winy = ft_atoi(argv[3]);
+	if (e->winx < 400 || e->winy < 800 || e->winx > 2560 || e->winy > 1440)
+	{
+		ft_putendl("usage: ./fdf target_file [400 <= weidth_size <= 2560]\
+		[800 <= long_size <= 1440]");
+		exit(1);
+	}
+}
 int main(int argc, char **argv)
 {
 	t_env e;
 
 	e.proj = 0;
+	ft_verifscreensize(&e, argv);
 	e.size = checkandparse(argc, "maps/42.fdf", &e.dbtab);
-	new_window(ft_atoi(argv[2]), ft_atoi(argv[3]), &e);
+	new_window(&e);
 	begin_inter(&e);
 	img(&e);
 	table_too_img(&e);
@@ -199,11 +211,10 @@ int main(int argc, char **argv)
 	ft_2dmemdel((void **)e.dbtab);
 	img(&e);
 	e.size = checkandparse(argc, argv[1], &e.dbtab);
-	ft_2dputtabint(e.dbtab, e.size);
+	// ft_2dputtabint(e.dbtab, e.size);
 	begin(&e);
 	mlx_hook(e.win_ptr, 2, (1 << 0), ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);
-	ft_2dmemdel((void **)e.dbtab); // a enlever ?
 	return (0);
 }
 // t_point a;

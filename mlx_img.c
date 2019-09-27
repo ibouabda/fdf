@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/27 12:19:32 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/27 18:43:59 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void ft_find_color(t_point a, t_env *e)
 	if (a.h < 0)
 		color = ABS(255 * (a.h / (float)(e->min * e->alt)));
 	// if (color != 0)
-		printf("color = %i, a.h = %i, e->max = %i, e->min = %i, e->alt = %i\n", color, a.h, e->max, e->min, e->alt);
+		// printf("color = %i, a.h = %i, e->max = %i, e->min = %i, e->alt = %i\n", color, a.h, e->max, e->min, e->alt);
 	ft_fill_pixel(a, color, e);
 	
 }
@@ -69,12 +69,10 @@ void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)
 	ft_strdel(&color);
 }
 
-void	new_window(int winx, int winy, t_env *e)
+void	new_window(t_env *e)
 {
-	e->winx = winx;
-	e->winy = winy;
 	e->mlx_ptr = mlx_init();
-	e->win_ptr = mlx_new_window(e->mlx_ptr, winx, winy,"fdf");
+	e->win_ptr = mlx_new_window(e->mlx_ptr, e->winx, e->winy,"fdf");
 }
 
 void img(t_env *e)

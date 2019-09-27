@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/26 16:29:41 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/27 18:43:55 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@
 # define ZOOM "Zoom/Unzoom : 2/3"
 # define INC "Increase/Decrease : Q/E"
 # define PAUSE "Pause : ESC"
-# define RESET "RESET : R"
+# define RESET "Reset : R"
 # define QUIT "If You Wanna Quit The Game Press On ESC"
 
 # define ENTER 36
@@ -133,7 +133,7 @@ int				drawline(t_point a, t_point b, t_env *e);
 int				drawvertical(t_point a, t_point b, t_env *e);
 int				ft_drawline(t_point *a, t_point *b, t_env *e);
 void			ft_find_color(t_point a, t_env *e);
-void			new_window(int winx, int winy, t_env *e);
+void			new_window(t_env *e);
 void			new_img(t_env *e);
 void			img(t_env *e);
 t_point			interpret(int x, int y, int z, t_env *e);
