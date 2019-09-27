@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 15:31:27 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/27 20:10:35 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/27 20:27:42 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,24 @@ void		ft_chooseid(t_prlist **id, const int fd)
 	}
 }
 
-int			ft_prlstdellink(t_prlist **id)
-{
-	// t_prlist *m;
+// int			ft_prlstdellink(t_prlist **id)
+// {
+// 	t_prlist *m;
 
-	// m = *id;
-	// if ((*id)->next)
-	// 	(*id) = (*id)->next;
-	// else if ((*id)->prev)
-	// 	(*id) = (*id)->next;
-	// if (m->content)
-	// {
-	// 	free(m->content);
-	// 	m->content = NULL;
-	// }
-	// free(m);
-	// m = NULL;
-	return (0);
-}
+// 	m = *id;
+// 	if ((*id)->next)
+// 		(*id) = (*id)->next;
+// 	else if ((*id)->prev)
+// 		(*id) = (*id)->next;
+// 	if (m->content)
+// 	{
+// 		free(m->content);
+// 		m->content = NULL;
+// 	}
+// 	free(m);
+// 	m = NULL;
+// 	return (0);
+// }
 
 int			get_next_line(const int fd, char **line)
 {
@@ -104,6 +104,6 @@ int			get_next_line(const int fd, char **line)
 	ft_strdel(&buftmp);
 	takeline(id->content, line);
 	if (red == 0 && !((char *)id->content)[0])
-		return (ft_prlstdellink(&id));
+		return (0);
 	return (1);
 }
