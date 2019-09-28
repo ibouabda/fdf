@@ -6,23 +6,23 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:30:54 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/26 16:58:15 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 13:53:01 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point interpret(int x, int y, int z, t_env *e)
+t_point	interpret(int x, int y, int z, t_env *e)
 {
-	t_point point;
-	
+	t_point	point;
+
 	x = x * e->zoom;
 	y = y * e->zoom;
 	z = z * e->alt;
 	point.h = z;
 	if (e->proj == 0)
 	{
-		z = z * e->zoom / 20; // division par 20 a observer
+		z = z * e->zoom / 20;
 		point.x = e->posx + (x - z) / sqrt(2);
 		point.y = e->posy + (x + 2 * y + z) / sqrt(6);
 	}
@@ -36,9 +36,9 @@ t_point interpret(int x, int y, int z, t_env *e)
 
 void	line_too_img(t_env *e, int taby)
 {
-	int tabx;
-	t_point a;
-	t_point b;
+	int		tabx;
+	t_point	a;
+	t_point	b;
 
 	tabx = 0;
 	while (tabx < e->size)
@@ -60,7 +60,7 @@ void	line_too_img(t_env *e, int taby)
 
 void	table_too_img(t_env *e)
 {
-	int taby;
+	int	taby;
 
 	taby = 0;
 	while (e->dbtab[taby])

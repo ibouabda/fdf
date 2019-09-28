@@ -6,20 +6,18 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/26 18:02:25 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 15:38:02 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		ft_analyze_line(char *line)
+int		ft_analyze_line(char *line, int i, int nbvar)
 {
-	int	i;
 	int	var;
-	int	nbvar;
 
-	i = 0;
-	nbvar = 0;
+	while (line[i] == ' ')
+		i++;
 	while (line[i])
 	{
 		if (line[i] == '-')
@@ -29,12 +27,12 @@ int		ft_analyze_line(char *line)
 		var = i;
 		while (ft_isdigit(line[i]))
 			i++;
-		if (line[i] == ' ' && i - var < 5)
+		if (line[i] == ' ' && i - var < 4)
 		{
 			while (line[i] == ' ')
 				i++;
 		}
-		else if (line[i] || i - var >= 5)
+		else if (line[i] || i - var >= 4)
 			return (0);
 		nbvar++;
 	}
@@ -49,7 +47,7 @@ int		ft_check_line(t_list *m)
 	nbvarmem = -1;
 	while (m)
 	{
-		if ((nbvar = ft_analyze_line((char *)m->content)) == 0)
+		if ((nbvar = ft_analyze_line((char *)m->content, 0, 0)) == 0)
 			return (0);
 		if (nbvarmem == -1)
 			nbvarmem = nbvar;
@@ -112,14 +110,23 @@ int		read_file(int fd, int ***dbtab)
 	{
 		ft_lstaddend(&m, ft_lstnewd(line, 0));
 		if (!line[0])
+		{
+			ft_putendl("GNL");
 			ft_exit(1, *dbtab, m);
+		}
 		size++;
 	}
 	if (line[0])
+	{
+		ft_putendl("line");
 		ft_exit(1, *dbtab, m);
+	}
 	ft_strdel(&line);
 	if (!m || !((char *)m->content)[0] || (nbvar = ft_check_line(m)) == 0)
+	{
+		ft_putendl("check");
 		ft_exit(1, *dbtab, m);
+	}
 	*dbtab = create_dbtable(m, size, nbvar);
 	ft_lstdelstr(m);
 	return (nbvar);

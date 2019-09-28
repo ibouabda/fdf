@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:22:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/19 19:37:41 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 14:49:35 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,19 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct	s_3dpoint
+typedef struct		s_3dpoint
 {
-	int x, y, z;
-}				t_3dpoint;
+	int x;
+	int y;
+	int z;
+}					t_3dpoint;
 
-typedef struct	s_point
+typedef struct		s_point
 {
-	int x, y, h;
-}				t_point;
+	int x;
+	int y;
+	int h;
+}					t_point;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *src, size_t n);
@@ -135,7 +139,8 @@ char				*ft_strrev(char *str);
 t_list				*ft_lstnewc(void *content, size_t c);
 char				*ft_itoa_base_maj(int nb, int base);
 void				ft_putnbr_count(int n, int *i);
-int					ft_strnstrdup(char *str, char *to_find, size_t n, char **stock);
+int					ft_strnstrdup(char *str, char *to_find,\
+size_t n, char **stock);
 char				*ft_str2chr(char *src, char *to_find);
 t_list				*ft_lstnewd(void *content, size_t content_size);
 void				ft_lstdelstr(t_list *alst);

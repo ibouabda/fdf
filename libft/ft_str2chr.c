@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:02:26 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/09 13:21:49 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 14:47:16 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_str2chr(char *src, char *to_find)
 	while (src[i])
 	{
 		if (ft_strchr(to_find, src[i]))
-			return(src + i);
+			return (src + i);
 		i++;
 	}
 	return (NULL);

@@ -6,13 +6,13 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 10:52:15 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/12 15:29:57 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 14:46:57 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_puttabint(int *tab, int size)
+void	ft_puttabint(int *tab, int size)
 {
 	int i;
 

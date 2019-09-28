@@ -3,79 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:29:23 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/27 19:15:22 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 13:54:32 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void ft_find_color(t_point a, t_env *e)
-// {
-// 	int color;
-// 	char *str;
-
-// 	color = 1000;
-// 	str = ft_itoa_base(color, 16);
-// 	ft_fill_pixel(a, ft_strjoin("0x", str), e);
-// 	ft_strdel(&str);
-	
-// }
-
-void ft_find_color(t_point a, t_env *e)
+void	ft_find_color(t_point a, t_env *e)
 {
-	int color;
+	int	color;
 
 	color = 0;
 	if (a.h > 0)
 		color = ABS(255 * (a.h / (float)(e->max * e->alt)));
 	if (a.h < 0)
 		color = ABS(255 * (a.h / (float)(e->min * e->alt)));
-	// if (color != 0)
-		// printf("color = %i, a.h = %i, e->max = %i, e->min = %i, e->alt = %i\n", color, a.h, e->max, e->min, e->alt);
 	ft_fill_pixel(a, color, e);
-	
 }
 
 void	ft_fill_pixel(t_point point, int color, t_env *e)
 {
-	int pos;
+	int	pos;
 
 	pos = point.y * e->winx * 4 + point.x * 4;
 	if (point.h >= 0)
 	{
-		e->img_string[pos] = (char) 150;
-		e->img_string[pos + 1] = (char) 0;
-		e->img_string[pos + 2] = (char) color;
+		e->img_string[pos] = (char)150;
+		e->img_string[pos + 1] = (char)0;
+		e->img_string[pos + 2] = (char)color;
 	}
 	else
 	{
-		e->img_string[pos] = (char) 150;
-		e->img_string[pos + 1] = (char) color;
-		e->img_string[pos + 2] = (char) 0;
+		e->img_string[pos] = (char)150;
+		e->img_string[pos + 1] = (char)color;
+		e->img_string[pos + 2] = (char)0;
 	}
-}
-
-void	ft_fill_pixel_hexa(t_point point, char *color, t_env *e)
-{
-	int pos;
-
-	pos = point.y * e->winx * 4 + point.x * 4;
-	ft_strcpy(e->img_string + pos, color);
-	ft_strcpy(e->img_string + pos + 1, color);
-	ft_strcpy(e->img_string + pos + 2, color);
-	ft_strdel(&color);
 }
 
 void	new_window(t_env *e)
 {
 	e->mlx_ptr = mlx_init();
-	e->win_ptr = mlx_new_window(e->mlx_ptr, e->winx, e->winy,"fdf");
+	e->win_ptr = mlx_new_window(e->mlx_ptr, e->winx, e->winy, "fdf");
 }
 
-void img(t_env *e)
+void	img(t_env *e)
 {
 	int		bpp;
 	int		s_l;
@@ -85,7 +59,7 @@ void img(t_env *e)
 	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
 }
 
-void new_img(t_env *e)
+void	new_img(t_env *e)
 {
 	int		bpp;
 	int		s_l;
@@ -95,11 +69,3 @@ void new_img(t_env *e)
 	e->img_ptr = mlx_new_image(e->mlx_ptr, e->winx, e->winy);
 	e->img_string = mlx_get_data_addr(e->img_ptr, &(bpp), &(s_l), &(endian));
 }
-	// while (y < 720 && x < 1280 )
-	// {
-	// 	fill_pixel(e.img_string, x, y, 255);
-	// 	x += 1;
-	// 	y += 1;
-	// }
-	// mlx_put_image_to_window(e.mlx_ptr, e.win_ptr, e.img_ptr, 0, 0);
-	// mlx_hook(e.win_ptr, 2, (1 << 0), mlx_put_image_to_window, &e);

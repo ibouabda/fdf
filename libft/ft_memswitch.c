@@ -6,11 +6,11 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:50:21 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/19 18:21:19 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 14:46:46 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_memswitch(void **a, void **b)
+void	ft_memswitch(void **a, void **b)
 {
 	void **c;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_drawline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 11:50:30 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/24 21:16:12 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 15:12:33 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void highline(t_point a, t_point b, t_env *e, float m)
+void	highline(t_point a, t_point b, t_env *e, float m)
 {
 	float x;
 	float h;
@@ -21,7 +21,6 @@ void highline(t_point a, t_point b, t_env *e, float m)
 	x = a.x;
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
-	// printf("highline\n");
 	while (a.y <= b.y)
 	{
 		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
@@ -34,7 +33,7 @@ void highline(t_point a, t_point b, t_env *e, float m)
 	}
 }
 
-void highline2(t_point a, t_point b, t_env *e, float m)
+void	highline2(t_point a, t_point b, t_env *e, float m)
 {
 	float x;
 	float h;
@@ -43,7 +42,6 @@ void highline2(t_point a, t_point b, t_env *e, float m)
 	x = a.x;
 	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
 	h = a.h;
-	// printf("highline2\n");
 	while (a.y >= b.y)
 	{
 		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
@@ -56,7 +54,7 @@ void highline2(t_point a, t_point b, t_env *e, float m)
 	}
 }
 
-void ft_line(t_point a, t_point b, t_env *e, float m)
+void	ft_line(t_point a, t_point b, t_env *e, float m)
 {
 	float y;
 	float mh;
@@ -64,114 +62,23 @@ void ft_line(t_point a, t_point b, t_env *e, float m)
 
 	y = a.y;
 	h = a.h;
-	// printf("line\n");
-	// printf("m = %f \n", m);
-		mh = (float)(b.h - a.h) / (float)(b.x - a.x);
-		while (a.x <= b.x)
-		{
-			// printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
-			if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
-				ft_find_color(a, e);
-			y += m;
-			h += mh;
-			a.y = (int)(y + 0.5);
-			a.h = (int)(h + 0.5);
-			a.x++;
-		}
-}
-
-void ft_line2(t_point a, t_point b, t_env *e, float m)
-{
-	float y;
-	float mh;
-	float h;
-
-
-	y = a.y;
-	h = a.h;
-	// printf("line2\n");
-	// printf("m = %f \n", m);
-		mh = (float)(b.h - a.h) / (float)(b.x - a.x);
-		while (a.x >= b.x)
-		{
-			// printf("y = %f, a.y = %i a.x = %i \n", y, a.y, a.x);
-			if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
-				ft_find_color(a, e);
-			y -= m;
-			h -= mh;
-			a.y = (int)(y + 0.5);
-			a.h = (int)(h + 0.5);
-			a.x--;
-		}
-}
-
-void ft_vertical(t_point a, t_point b, t_env *e)
-{
-	float h;
-	float mh;
-	
-	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
-	h = a.h;
-	while (a.y <= b.y)
+	mh = (float)(b.h - a.h) / (float)(b.x - a.x);
+	while (a.x <= b.x)
 	{
 		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
 			ft_find_color(a, e);
-		a.y++;
+		y += m;
 		h += mh;
+		a.y = (int)(y + 0.5);
 		a.h = (int)(h + 0.5);
+		a.x++;
 	}
 }
 
-void ft_vertical2(t_point a, t_point b, t_env *e)
-{
-	float h;
-	float mh;
-	
-	mh = (float)(b.h - a.h) / (float)(b.y - a.y);
-	h = a.h;
-	while (a.y >= b.y)
-	{
-		if (a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
-			ft_find_color(a, e);
-		a.y--;
-		h -= mh;
-		a.h = (int)(h + 0.5);
-	}
-}
-
-// void ft_horizontal(t_point a, t_point b, t_env *e)
-// {
-// 	float h;
-// 	float mh;
-	
-// 	mh = (float)(b.h - a.h) / (float)(b.x - a.x);
-// 	h = a.h;
-// 	while (a.x <= b.x && a.x < e->winx && a.y < e->winy && a.x >= 0 && a.y >= 0)
-// 	{
-// 		ft_find_color(a, e);
-// 		a.x++;
-// 		h += mh;
-// 		a.h = (int)(h + 0.5);
-// 	}
-// }
-void ft_switchpoint(t_point **a, t_point **b)
-{
-	t_point **point;
-
-	point = (t_point**)malloc(sizeof(t_point*));
-	*point = *a;
-	*a = *b;
-	*b = *point;
-	free(point);
-}
-
-int ft_drawline(t_point *a, t_point *b, t_env *e)
+int		ft_drawline(t_point *a, t_point *b, t_env *e)
 {
 	float m;
 
-	// if ((a->x > e->winx || a->y > e->winy || a->x < 0 || a->y < 0)
-	// && (b->x > e->winx || b->y > e->winy || b->x < 0 || b->y < 0))
-	// 	return (0);
 	if (a->x == b->x)
 		(a->y < b->y) ? ft_vertical(*a, *b, e) : ft_vertical2(*a, *b, e);
 	else
@@ -187,4 +94,3 @@ int ft_drawline(t_point *a, t_point *b, t_env *e)
 	}
 	return (1);
 }
-	// printf("a.x = %i a.y = %i b.x = %i b.y = %i\n", a->x, a->y, b->x, b->y);

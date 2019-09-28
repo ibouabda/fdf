@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/27 19:15:25 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 14:51:39 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 # define FDF_H
 
 # define ESC 53
-
-// dont work :
-// # define LEFT_CLICK 1
-// # define RIGHT_CLICK 2
-// # define SCROLL_UP 4
-// # define SCROLL_DOWN 5
 
 # define A 0
 # define B 11
@@ -72,7 +66,6 @@
 
 # define FDF "FDF"
 # define BEGIN "Let's Play : Press On ENTER"
-// # define INSTR "Instructions :"
 # define PROJ "Change Projection : P"
 # define MOVE "Move : Arrows"
 # define ANGLE "Change Angle : WASD"
@@ -86,10 +79,8 @@
 
 # include "libft/libft.h"
 # include "minilibx_macos/mlx.h"
-# include <stdio.h> //a enlever
 # include <fcntl.h>
 # include <math.h>
-
 
 typedef struct	s_env
 {
@@ -139,5 +130,12 @@ void			img(t_env *e);
 t_point			interpret(int x, int y, int z, t_env *e);
 void			interface(t_env *e);
 void			pause2(t_env *e);
+int				ft_key_hook(int keycode, t_env *e);
+void			begin(t_env *e);
+void			ft_maxmin(t_env *e);
+void			ft_vertical2(t_point a, t_point b, t_env *e);
+void			ft_vertical(t_point a, t_point b, t_env *e);
+void			ft_vertical2(t_point a, t_point b, t_env *e);
+void			ft_line2(t_point a, t_point b, t_env *e, float m);
 
 #endif

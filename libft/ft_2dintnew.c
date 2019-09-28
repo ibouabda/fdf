@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_2dintnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 18:04:15 by idris             #+#    #+#             */
-/*   Updated: 2019/09/11 18:08:27 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 14:41:39 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	**ft_2dintnew(size_t size)
 {
-	int     **str;
-	size_t  i;
+	int		**str;
+	size_t	i;
 
 	i = 0;
 	if (!(str = (int**)malloc(sizeof(int*) * (size + 1))))
