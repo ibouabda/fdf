@@ -6,7 +6,7 @@
 /*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 15:31:27 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/27 20:27:42 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 09:54:56 by idris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,30 @@ void		ft_chooseid(t_prlist **id, const int fd)
 	}
 }
 
-// int			ft_prlstdellink(t_prlist **id)
-// {
-// 	t_prlist *m;
+int			ft_prlstdellink(t_prlist **id) // le segfault viens de la liberation de la memoire
+{
+	t_prlist *m;
 
-// 	m = *id;
-// 	if ((*id)->next)
-// 		(*id) = (*id)->next;
-// 	else if ((*id)->prev)
-// 		(*id) = (*id)->next;
-// 	if (m->content)
-// 	{
-// 		free(m->content);
-// 		m->content = NULL;
-// 	}
-// 	free(m);
-// 	m = NULL;
-// 	return (0);
-// }
+	m = *id;
+	if ((*id)->prev && (*id)->next)
+	{
+		(*id)->prev->next = (*id)->next;
+		(*id)->next->prev = (*id)->prev;
+		(*id) = (*id)->prev;
+	}
+	else if ((*id)->next)
+		(*id) = (*id)->next;
+	else if ((*id)->prev)
+		(*id) = (*id)->prev;
+	if (m->content)
+	{
+		free(m->content);
+		m->content = NULL;
+	}
+	free(m);
+	m = NULL;
+	return (0);
+}
 
 int			get_next_line(const int fd, char **line)
 {
@@ -86,6 +92,10 @@ int			get_next_line(const int fd, char **line)
 	char			*todel;
 	int				red;
 
+	if	(id == NULL)
+		ft_putendl("id : NULL");
+	else
+		ft_putendl("exist");
 	red = -1;
 	buftmp = ft_strnew(BUFF_SIZE + 1);
 	if (!line || (read(fd, buftmp, 0)) == -1)
