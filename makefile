@@ -6,7 +6,7 @@
 #    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/09/28 14:22:57 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/09/28 16:39:26 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 MLX = -framework OpenGL -framework AppKit
 
-CC = gcc -g
+CC = gcc
 
 SRC_NAME = main.c read_file.c ft_fdf.c table_too_img.c mlx_img.c\
 			ft_drawline.c ft_key_hook.c

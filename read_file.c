@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 15:55:25 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/28 15:38:02 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 16:34:57 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,23 +110,14 @@ int		read_file(int fd, int ***dbtab)
 	{
 		ft_lstaddend(&m, ft_lstnewd(line, 0));
 		if (!line[0])
-		{
-			ft_putendl("GNL");
 			ft_exit(1, *dbtab, m);
-		}
 		size++;
 	}
-	if (line[0])
-	{
-		ft_putendl("line");
+	if (!line || line[0])
 		ft_exit(1, *dbtab, m);
-	}
 	ft_strdel(&line);
 	if (!m || !((char *)m->content)[0] || (nbvar = ft_check_line(m)) == 0)
-	{
-		ft_putendl("check");
 		ft_exit(1, *dbtab, m);
-	}
 	*dbtab = create_dbtable(m, size, nbvar);
 	ft_lstdelstr(m);
 	return (nbvar);
