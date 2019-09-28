@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/27 19:32:22 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 12:16:33 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,16 +217,3 @@ int main(int argc, char **argv)
 	mlx_loop(e.mlx_ptr);
 	return (0);
 }
-// t_point a;
-// t_point b;
-// a.x = 580;
-// a.y = 300;
-// b.x = 600;
-// b.y = 250;
-// ft_trylines(&a, &b, &e);
-// ft_fill_pixel(a, 255, &e);
-// ft_fill_pixel(b, 255, &e);
-// table_too_img(&e, dbtab, size);
-// table_too_img(&e);
-// printf("winx : %i, winy : %i\n", e.winx, e.winy);
-// printf("e.posx : %i e.posy : %i\n", e.posx, e.posy);

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idris <idris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 15:31:27 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/09/28 09:54:56 by idris            ###   ########.fr       */
+/*   Updated: 2019/09/28 12:16:07 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdio.h"
 
 t_prlist	*ft_prlistnewstr(char *content, int fd, t_prlist *prev)
 {
@@ -60,11 +61,11 @@ void		ft_chooseid(t_prlist **id, const int fd)
 	}
 }
 
-int			ft_prlstdellink(t_prlist **id) // le segfault viens de la liberation de la memoire
+int			ft_prlstdellink(t_prlist **id)
 {
-	t_prlist *m;
+	t_prlist **m;
 
-	m = *id;
+	m = id;
 	if ((*id)->prev && (*id)->next)
 	{
 		(*id)->prev->next = (*id)->next;
@@ -72,16 +73,18 @@ int			ft_prlstdellink(t_prlist **id) // le segfault viens de la liberation de la
 		(*id) = (*id)->prev;
 	}
 	else if ((*id)->next)
-		(*id) = (*id)->next;
-	else if ((*id)->prev)
-		(*id) = (*id)->prev;
-	if (m->content)
 	{
-		free(m->content);
-		m->content = NULL;
+		(*id) = (*id)->next;
+		(*id)->prev = NULL;
 	}
-	free(m);
-	m = NULL;
+	else if ((*id)->prev)
+	{
+		(*id) = (*id)->prev;
+		(*id)->next = NULL;
+	}
+	if ((*m)->content)
+		ft_memdel((void**)&((*m)->content));
+	ft_memdel((void**)m);
 	return (0);
 }
 
@@ -92,10 +95,6 @@ int			get_next_line(const int fd, char **line)
 	char			*todel;
 	int				red;
 
-	if	(id == NULL)
-		ft_putendl("id : NULL");
-	else
-		ft_putendl("exist");
 	red = -1;
 	buftmp = ft_strnew(BUFF_SIZE + 1);
 	if (!line || (read(fd, buftmp, 0)) == -1)
@@ -114,6 +113,6 @@ int			get_next_line(const int fd, char **line)
 	ft_strdel(&buftmp);
 	takeline(id->content, line);
 	if (red == 0 && !((char *)id->content)[0])
-		return (0);
+		return (ft_prlstdellink(&id));
 	return (1);
 }
