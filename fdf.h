@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/28 14:51:39 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 17:46:17 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@
 # define PAUSE "Pause : ESC"
 # define RESET "Reset : R"
 # define QUIT "If You Wanna Quit The Game Press On ESC"
+# define USAGE "usage: ./fdf target_file [400 <= weidth_size <= 2560]\
+[800 <= long_size <= 1440]"
 
 # define ENTER 36
 

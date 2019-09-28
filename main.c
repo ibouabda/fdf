@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/28 16:23:42 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/28 17:47:50 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,12 @@ void	ft_maxmin(t_env *e)
 	e->sizey = taby;
 }
 
-int		checkandparse(int argc, char *argv, int ***dbtab)
+int		checkandparse(char *argv, int ***dbtab)
 {
 	int fd;
 	int fd_dir;
 	int size;
 
-	if (argc != 4)
-	{
-		ft_putendl("usage: ./fdf target_file [400 <= weidth_size <= 2560]\
-		[800 <= long_size <= 1440]");
-		exit(1);
-	}
 	fd_dir = open(argv, O_DIRECTORY);
 	if ((fd = open(argv, O_RDONLY)) < 0 || fd_dir > 0)
 	{
@@ -84,14 +78,18 @@ void	begin_inter(t_env *e)
 	e->posy = (e->winy / 4.5 - (b.y - a.y) / 2);
 }
 
-void	ft_verifscreensize(t_env *e, char **argv)
+void	ft_verifscreensize(t_env *e, int argc, char **argv)
 {
+	if (argc != 4)
+	{
+		ft_putendl(USAGE);
+		exit(1);
+	}
 	e->winx = ft_atoi(argv[2]);
 	e->winy = ft_atoi(argv[3]);
 	if (e->winx < 400 || e->winy < 800 || e->winx > 2560 || e->winy > 1440)
 	{
-		ft_putendl("usage: ./fdf target_file [400 <= weidth_size <= 2560]\
-		[800 <= long_size <= 1440]");
+		ft_putendl(USAGE);
 		exit(1);
 	}
 }
@@ -101,8 +99,8 @@ int		main(int argc, char **argv)
 	t_env e;
 
 	e.proj = 0;
-	ft_verifscreensize(&e, argv);
-	e.size = checkandparse(argc, "maps/42.fdf", &e.dbtab);
+	ft_verifscreensize(&e, argc, argv);
+	e.size = checkandparse("maps/42.fdf", &e.dbtab);
 	new_window(&e);
 	begin_inter(&e);
 	img(&e);
@@ -112,7 +110,7 @@ int		main(int argc, char **argv)
 	interface(&e);
 	ft_2dmemdel((void **)e.dbtab);
 	img(&e);
-	e.size = checkandparse(argc, argv[1], &e.dbtab);
+	e.size = checkandparse(argv[1], &e.dbtab);
 	begin(&e);
 	mlx_hook(e.win_ptr, 2, (1 << 0), ft_key_hook, &e);
 	mlx_loop(e.mlx_ptr);
