@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:08:41 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/28 17:46:17 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/09/30 12:25:14 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,21 +109,10 @@ typedef struct	s_env
 	char	*img_string;
 }				t_env;
 
-typedef struct	s_equ
-{
-	double		a;
-	double		b;
-}				t_equ;
-
-void			create_img(int winx, int winy, t_env *e);
 int				read_file(int fd, int ***dbtab);
 void			ft_exit(int err, int **dbtable, t_list *m);
 void			table_too_img(t_env *e);
 void			ft_fill_pixel(t_point point, int color, t_env *e);
-void			create_img(int winx, int winy, t_env *e);
-void			ft_trylines(t_point *a, t_point *b, t_env *e);
-int				drawline(t_point a, t_point b, t_env *e);
-int				drawvertical(t_point a, t_point b, t_env *e);
 int				ft_drawline(t_point *a, t_point *b, t_env *e);
 void			ft_find_color(t_point a, t_env *e);
 void			new_window(t_env *e);
@@ -131,13 +120,11 @@ void			new_img(t_env *e);
 void			img(t_env *e);
 t_point			interpret(int x, int y, int z, t_env *e);
 void			interface(t_env *e);
-void			pause2(t_env *e);
 int				ft_key_hook(int keycode, t_env *e);
 void			begin(t_env *e);
 void			ft_maxmin(t_env *e);
 void			ft_vertical2(t_point a, t_point b, t_env *e);
 void			ft_vertical(t_point a, t_point b, t_env *e);
-void			ft_vertical2(t_point a, t_point b, t_env *e);
 void			ft_line2(t_point a, t_point b, t_env *e, float m);
 
 #endif
