@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/09/30 12:31:55 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:31:36 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,16 @@ void	ft_verifscreensize(t_env *e, int argc, char **argv)
 {
 	if (argc != 4)
 	{
-		ft_putendl(USAGE);
+		ft_putendl("usage: ./fdf target_file [400 <= weidth_size <= 2560]\
+[800 <= long_size <= 1440]");
 		exit(1);
 	}
 	e->winx = ft_atoi(argv[2]);
 	e->winy = ft_atoi(argv[3]);
 	if (e->winx < 400 || e->winy < 800 || e->winx > 2560 || e->winy > 1440)
 	{
-		ft_putendl(USAGE);
+		ft_putendl("usage: ./fdf target_file [400 <= weidth_size <= 2560]\
+[800 <= long_size <= 1440]");
 		exit(1);
 	}
 }
