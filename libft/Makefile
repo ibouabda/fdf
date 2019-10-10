@@ -3,19 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idris <idris@student.42.fr>                +#+  +:+       +#+         #
+#    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 21:31:16 by ibouabda          #+#    #+#              #
-#    Updated: 2019/09/27 19:16:31 by idris            ###   ########.fr        #
+#    Updated: 2019/10/10 20:54:51 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+### COMPILATION ###
+
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-CC = gcc -g
+### EXECUTABLE ###
 
+NAME = libft.a
+
+### INCLUDES ###
+
+SRC_PATH = srcs
+OBJ_PATH = objs
+HEADER = incl
 SRC_NAME = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isprint.c ft_isdigit.c \
 		ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_memalloc.c \
 		ft_lstmap.c ft_lstnew.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
@@ -36,17 +45,52 @@ SRC_NAME = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isprint.c ft_isdigit.c \
 		ft_2dintnew.c ft_intnew.c ft_puttabint.c ft_2dputtabint.c ft_2dmemdel.c t_3dpointval.c\
 		ft_putnbrl.c ft_memswitch.c get_next_line.c
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
+### OBJECTS ###
 
-all: $(NAME)
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
+OBJS = $(addprefix $(OBJ_PATH)/,$(SRC_NAME:.c=.o))
 
-$(NAME): $(OBJ_NAME)
-	gcc $(CFLAGS) -c $(SRC_NAME)
-	ar rc $(NAME) $(OBJ_NAME)
-	ranlib $(NAME)
+### COLORS ###
+
+NOC         = \033[0m
+BOLD        = \033[1m
+UNDERLINE   = \033[4m
+BLACK       = \033[1;30m
+RED         = \033[1;31m
+GREEN       = \033[1;32m
+YELLOW      = \033[1;33m
+BLUE        = \033[1;34m
+VIOLET      = \033[1;35m
+CYAN        = \033[1;36m
+WHITE       = \033[1;37m
+
+
+all: tmp $(NAME)
+
+$(NAME): $(OBJS)
+	@echo "$(YELLOW)Creating libft files ...$(NOC)"
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+	@echo "$(GREEN)Project successfully compiled"
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)/$(NAME).h
+	@$(CC) $(CFLAGS) -I $(HEADER) -c -o $@ $<
+	@echo "$(BLUE)Creating object file -> $(YELLOW)$(notdir $@)... $(GREEN)[Done]$(NOC)"
+
+tmp:
+	@mkdir -p $(OBJ_PATH)
+
+# $(NAME): $(OBJ_NAME)
+#	gcc $(CFLAGS) -c $(SRC_NAME)
+#	ar rc $(NAME) $(OBJ_NAME)
+#	ranlib $(NAME)
+
 clean:
-	/bin/rm -f $(OBJ_NAME)
+	@rm -rf $(OBJ_PATH)
+
 fclean: clean
-	/bin/rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
+
+.phony : all clean fclean re
