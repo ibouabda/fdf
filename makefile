@@ -6,7 +6,7 @@
 #    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 17:46:29 by idris             #+#    #+#              #
-#    Updated: 2019/10/10 19:49:24 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/10/11 15:42:38 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,17 +57,17 @@ WHITE       = \033[1;37m
 all: tmp $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(GREEN)Creating lib files$(NOC)"
+	@echo "$(GREEN)Creating lib files ...$(NOC)"
 	@make -C $(LIBFT)
 	@make -C $(LIBMLX)
-	@$(CC) $(CFLAGS) -L $(LIBFT) -o $@ $^ $(MLXFLAGS) -L $(LIBMLX) minilibx_macos/libmlx.a libft/libft.a
-	@echo "$(GREEN)Project successfully compiled$(NOC)"
+	@$(CC) -w $(CFLAGS) -L $(LIBFT) -o $@ $^ $(MLXFLAGS) -L $(LIBMLX) minilibx_macos/libmlx.a libft/libft.a
+	@echo "$(GREEN)Project successfully compiled !$(NOC)"
 
 tmp:
 	@mkdir -p $(OBJ_PATH)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)/$(NAME).h
-	@$(CC) $(CFLAGS) -I $(HEADER) -c -o $@ $<
+	@$(CC) $(CFLAGS) -w -I $(HEADER) -c -o $@ $<
 	@echo "$(BLUE)Creating object file -> $(YELLOW)$(notdir $@)... $(GREEN)[Done]$(NOC)"
 
 

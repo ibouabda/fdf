@@ -6,7 +6,7 @@
 #    By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 21:31:16 by ibouabda          #+#    #+#              #
-#    Updated: 2019/10/10 20:54:51 by ibouabda         ###   ########.fr        #
+#    Updated: 2019/10/11 15:25:28 by ibouabda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 ### EXECUTABLE ###
 
-NAME = libft.a
+NAME = libft
 
 ### INCLUDES ###
 
@@ -69,9 +69,9 @@ all: tmp $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(YELLOW)Creating libft files ...$(NOC)"
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
-	@echo "$(GREEN)Project successfully compiled"
+	@ar rc $(NAME).a $(OBJS)
+	@ranlib $(NAME).a
+	@echo "$(GREEN)Project successfully compiled !"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)/$(NAME).h
 	@$(CC) $(CFLAGS) -I $(HEADER) -c -o $@ $<
@@ -89,7 +89,7 @@ clean:
 	@rm -rf $(OBJ_PATH)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME).a
 
 re: fclean all
 

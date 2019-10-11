@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 14:20:12 by ibouabda          #+#    #+#             */
-/*   Updated: 2019/10/10 18:34:57 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/10/11 16:10:44 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int		ft_key_hook(int keycode, t_env *e)
 		{
 			mlx_destroy_image(e->mlx_ptr, e->esc_img_ptr);
 			mlx_destroy_image(e->mlx_ptr, e->img_ptr);
+			mlx_destroy_window(e->mlx_ptr, e->win_ptr);
 			ft_exit(0, e->dbtab, NULL);
 		}
 	}
