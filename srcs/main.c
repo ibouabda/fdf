@@ -6,7 +6,7 @@
 /*   By: ibouabda <ibouabda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 16:06:11 by retounsi          #+#    #+#             */
-/*   Updated: 2019/10/11 15:59:24 by ibouabda         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:25:33 by ibouabda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	ft_verifscreensize(t_env *e, int argc, char **argv)
 [800 <= long_size <= 1440]");
 		exit(1);
 	}
-	
 }
 
 int		main(int argc, char **argv)
