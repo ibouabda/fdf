@@ -1,6 +1,6 @@
 # FDF
 
-![Mars](https://github.com/ibouabda/fdf/blob/master/pics/Mars.png)
+![Pylone_iso](https://github.com/ibouabda/fdf/blob/master/pics/Pylone_iso.png)
 
 Ce projet consiste à créer graphiquement la representation schématique (en “fils de
 fer” ou “wireframe” en anglais) d’un terrain en relief en reliant différents points (x, y,
