@@ -17,7 +17,7 @@ l’activité tectonique est importante permet de mieux comprendre ces phénomè
 
 Home Screen :
 
-![Menu](https://github.com/ibouabda/fdf/blob/master/pics/Menu.png)
+![Home_Screen](https://github.com/ibouabda/fdf/blob/master/pics/Home_Screen.png)
 
 Projection isométrique :
 
