@@ -16,7 +16,8 @@ l’activité tectonique est importante permet de mieux comprendre ces phénomè
 évolution, permettant ainsi d’être mieux préparés.
 
 Make it with "make" then run it with "./fdf [maps/choose_your_map] [choose your screen resolution]"
-Per example 'make & ./fdf maps/pylone.fdf 1440 855'
+
+Per example `make & ./fdf maps/pylone.fdf 1440 855`
 
 # Home Screen :
 
