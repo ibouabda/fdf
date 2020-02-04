@@ -15,7 +15,7 @@ planète. Autre exemple, comparer des représentations en trois dimensions d’u
 l’activité tectonique est importante permet de mieux comprendre ces phénomènes et leur
 évolution, permettant ainsi d’être mieux préparés.
 
-Make it with "make" then run it with "./fdf [maps/choose_your_map] [choose your screen resolution]"
+Make it with `make` then run it with `./fdf [maps/choose_your_map] [choose your screen resolution]`
 
 Per example `make & ./fdf maps/pylone.fdf 1440 855`
 
