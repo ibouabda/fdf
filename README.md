@@ -18,18 +18,18 @@ l’activité tectonique est importante permet de mieux comprendre ces phénomè
 Make it with "make" then run it with "./fdf [maps/choose_your_map] [choose your screen resolution]"
 Per example 'make & ./fdf maps/pylone.fdf 1440 855'
 
-Home Screen :
+# Home Screen :
 
 ![Home_Screen](https://github.com/ibouabda/fdf/blob/master/pics/Home_Screen.png)
 
-Projection isométrique :
+# Projection isométrique :
 
 ![Pylone_iso](https://github.com/ibouabda/fdf/blob/master/pics/Pylone_iso.png)
 
-Projection perspective : 
+# Projection perspective : 
 
 ![Pylone_pers](https://github.com/ibouabda/fdf/blob/master/pics/Pylone_pers.png)
 
-Une cartographie de Mars : 
+# Une cartographie de Mars : 
 
 ![Mars](https://github.com/ibouabda/fdf/blob/master/pics/Mars.png)
